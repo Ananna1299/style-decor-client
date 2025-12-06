@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../../../Hooks/useAuth";
+import axios from "axios";
 
 const Register = () => {
 
     const [showpassword,setShowPassword]=useState(true)
+    const navigate = useNavigate();
+    const {createUser,  updateData}=useAuth()
+
 
 
      const handleShowpassword=(e)=>{
@@ -23,10 +28,75 @@ const Register = () => {
 
     }= useForm()
 
+    
+
      const handleRegister=(data)=>{
-        console.log(data)
-        console.log(data.photo[0])
+       //console.log(data.photo[0])
         const profileImg=data.photo[0]
+        
+        createUser(data.email,data.password)
+        .then(result=>{
+            //console.log(result.user)
+
+            //store image and get the photoURL
+            const formData=new FormData();
+            formData.append("image",profileImg)
+            const image_API_URL=`https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host}`
+
+            axios.post(image_API_URL,formData)
+            .then(res=>{
+                 console.log("after store",res.data.data.url)
+
+          
+            
+
+
+            // //create user for database
+
+            // const userInfo={
+            //     displayName:data.name,
+            //     photoURL:res.data.data.url,
+            //     email:data.email
+            // }
+            // axiosSecure.post("/users",userInfo)
+            // .then(res=>{
+            //     if (res.data.insertedId){
+            //         console.log("user created in the database")
+            //     }
+            // })
+            
+
+
+
+
+
+
+                //update user profile
+                const updateInfo={
+                    displayName: data.name, 
+                    photoURL:res.data.data.url
+                }
+                updateData(updateInfo)
+                .then(() => {
+                    console.log("Profile updated!")
+                    // ...
+                    }).catch((error) => {
+                    // An error occurred
+                    // ...
+                    })
+
+            })
+
+
+            reset();
+        })
+        .catch((error) => {
+    console.log(error)
+  })
+  
+    navigate("/")
+        
+        
      }
 
   return(
