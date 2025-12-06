@@ -1,26 +1,27 @@
 import React from 'react';
 import Logo from '../../../Components/Logo/Logo';
 import { Link, NavLink } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navbar = () => {
-  //const { logout,user}=useAuth()
+  const { logout,user}=useAuth()
 
-//   const handleSignout=()=>{
-//     logout()
-//     .then((result)=>{
-//       console.log(result)
+  const handleSignout=()=>{
+    logout()
+    .then((result)=>{
+      console.log(result)
 
-//     })
-//     .catch(error=>{
-//       console.log(error)
-//     })
-//   }
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
 
     const links=<>
     <li><NavLink to="/">Home</NavLink></li>
     <li><NavLink>Services</NavLink></li>
       <li><NavLink to="/coverage">Service Coverage</NavLink></li>
-      <li><NavLink>About Us</NavLink></li>
+      <li><NavLink to="/about">About Us</NavLink></li>
       <li><NavLink>Contact</NavLink></li>
         
         {/* {
@@ -42,7 +43,7 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
+   
     <Logo></Logo>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -59,8 +60,20 @@ const Navbar = () => {
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100  rounded-box z-1 mt-3 w-25 md:w-30 lg:40 p-2 shadow">
-         <li className='hover:bg-primary'><Link to="/login" className='font-semibold text-secondary'>Sign in</Link></li>
-        <li className='hover:bg-primary'><Link to="/register" className='font-semibold text-secondary'>Sign up</Link></li>
+         <li className='hover:bg-primary'>
+          {
+            user?<button onClick={handleSignout} className='font-semibold text-secondary'>Sign Out</button>:
+            <Link to="/login" className='font-semibold text-secondary'>Sign In</Link>
+
+           
+          }
+
+           </li>
+          
+          
+          
+          
+        <li className='hover:bg-primary'><Link to="/register" className='font-semibold text-secondary'>Sign Up</Link></li>
       </ul>
     </div>
 
