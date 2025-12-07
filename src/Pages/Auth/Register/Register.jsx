@@ -4,12 +4,16 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
+import SocialLogin from "../SocialLogin/SocialLogin";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 
 const Register = () => {
 
     const [showpassword,setShowPassword]=useState(true)
     const navigate = useNavigate();
     const {createUser,  updateData}=useAuth()
+    const axiosSecure=useAxiosSecure()
 
 
 
@@ -51,19 +55,19 @@ const Register = () => {
             
 
 
-            // //create user for database
+            //create user for database
 
-            // const userInfo={
-            //     displayName:data.name,
-            //     photoURL:res.data.data.url,
-            //     email:data.email
-            // }
-            // axiosSecure.post("/users",userInfo)
-            // .then(res=>{
-            //     if (res.data.insertedId){
-            //         console.log("user created in the database")
-            //     }
-            // })
+            const userInfo={
+                displayName:data.name,
+                photoURL:res.data.data.url,
+                email:data.email
+            }
+            axiosSecure.post("/users",userInfo)
+            .then(res=>{
+                if (res.data.insertedId){
+                    console.log("user created in the database")
+                }
+            })
             
 
 
@@ -171,7 +175,7 @@ const Register = () => {
                 <p>Already have an account? <Link className='text-secondary' to="/login"> Login</Link></p>
                 </fieldset>
             </form>
-            {/* <GoogleLogin></GoogleLogin> */}
+            <SocialLogin></SocialLogin>
 
     </div>
   );

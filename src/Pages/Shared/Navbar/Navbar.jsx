@@ -24,10 +24,10 @@ const Navbar = () => {
       <li><NavLink to="/about">About Us</NavLink></li>
       <li><NavLink>Contact</NavLink></li>
         
-        {/* {
-          user && <><li><NavLink to="send-parcel">Send Parcel</NavLink></li>
+        {
+          user && <>
           <li><NavLink to="/dashboard">Dashboard</NavLink></li></>
-        } */}
+        }
 
       </>
     return (

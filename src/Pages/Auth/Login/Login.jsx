@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
      const {signIn}=useAuth()
@@ -97,7 +98,7 @@ const Login = () => {
                  <p>Don't have an account? <Link className='text-secondary' to="/register"> Register</Link></p>
                 </fieldset>
             </form>
-            {/* <GoogleLogin></GoogleLogin> */}
+        <SocialLogin></SocialLogin>
     </div>
    
   );
