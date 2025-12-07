@@ -8,6 +8,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 
 export const router = createBrowserRouter([
@@ -48,9 +49,10 @@ export const router = createBrowserRouter([
       <Dashboard></Dashboard>
     </PrivateRoute>,
     children:[
-
-      { index: true, 
-        Component: DashboardHome },
-      
-      ]}
+      {
+        path:"manage-users",
+        element:<ManageUsers></ManageUsers>
+      }
+    ]
+    }
 ]);
