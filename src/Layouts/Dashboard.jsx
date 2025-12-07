@@ -4,8 +4,10 @@ import { IoIosMenu } from 'react-icons/io';
 import { NavLink, Outlet } from 'react-router';
 import Logo from '../Components/Logo/Logo';
 import useRole from '../Hooks/useRole';
-import { FaUsers } from 'react-icons/fa';
+import { FaUsers, FaWpforms } from 'react-icons/fa';
 import background from "../assets/background.jpg"
+import Loading from '../Components/Loder/Loading';
+import { ImProfile } from 'react-icons/im';
 
 const Dashboard = () => {
     const {user,loading}=useAuth()
@@ -14,7 +16,7 @@ const Dashboard = () => {
     //console.log(role)
 
      if (loading){
-        return <span className="loading loading-spinner loading-xl"></span>
+        return <Loading></Loading>
     }
     
 
@@ -75,14 +77,31 @@ const Dashboard = () => {
           </button>
         </li>
 
+
+        {/* Profile info */}
+        <li >
+          <NavLink to="/dashboard/my-profile" className='hover:bg-primary'>
+            <ImProfile size={20} title='My Profile'/>
+          <p  className="is-drawer-close:hidden">My Profile</p>
+          </NavLink>
+        </li>
+
         {role === "admin" && (
         <>
             <li>
             <NavLink to="/dashboard/manage-users" className="hover:bg-primary">
-                <FaUsers size={20} />
+                <FaUsers size={20} title='Manage Users' />
                 <p className="is-drawer-close:hidden">Manage Users</p>
             </NavLink>
             </li>
+
+            <li>
+            <NavLink to="/dashboard/create-service" className="hover:bg-primary">
+                <FaWpforms size={20} title='Decoration Service / Packages' />
+                <p className="is-drawer-close:hidden">Decoration Service / Packages</p>
+            </NavLink>
+            </li>
+
         </>
         )}
 

@@ -9,6 +9,9 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
 import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
+import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
+import CreateService from "../Pages/Dashboard/CreateService/CreateService";
 
 
 export const router = createBrowserRouter([
@@ -50,8 +53,21 @@ export const router = createBrowserRouter([
     </PrivateRoute>,
     children:[
       {
+        path:"my-profile",
+        element:<MyProfile></MyProfile>
+
+      },
+      {
         path:"manage-users",
-        element:<ManageUsers></ManageUsers>
+        element: <AdminRoute>
+          <ManageUsers></ManageUsers>
+        </AdminRoute>
+      },
+      {
+        path:"create-service",
+        element:<AdminRoute>
+          <CreateService></CreateService>
+        </AdminRoute>
       }
     ]
     }
