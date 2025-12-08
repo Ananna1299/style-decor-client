@@ -12,6 +12,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import CreateService from "../Pages/Dashboard/CreateService/CreateService";
+import ServicesDisplay from "../Pages/ServicesDisplay/ServicesDisplay";
 
 
 export const router = createBrowserRouter([
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
         {
         path:"about",
         element:<AboutUs></AboutUs>
+      },
+      {
+        path:"service-display",
+        element:<ServicesDisplay></ServicesDisplay>
       }
 
     ]

@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const CreateService = () => {
     const {user}=useAuth()
@@ -13,6 +14,7 @@ const CreateService = () => {
         register,
         handleSubmit,
         formState: { errors },
+        reset
     }= useForm()
 
      const units = ["Per sqrt-ft", "Per floor", "Per meter"];
@@ -25,7 +27,14 @@ const CreateService = () => {
         axiosSecure.post("/services",data)
         .then(res=>{
             console.log(res.data)
+            Swal.fire({
+                    title: "Created service!",
+                    text: "Thanks.",
+                    icon: "success"
+                    });
+            
         })
+        reset()
      }
     return (
 
@@ -42,7 +51,7 @@ const CreateService = () => {
                     {/*service name */}
                 <label className="label font-bold">Service Name</label>
                 <input type="text" className="input w-full" placeholder="Service Name" 
-                {...register("serviceName" , { required: true, maxLength:20})} />
+                {...register("serviceName" , { required: true, maxLength:40})} />
 
                 {errors.serviceName?.type === "required" && (
                  <p className='text-red-600 font-semibold'>service name is required</p>

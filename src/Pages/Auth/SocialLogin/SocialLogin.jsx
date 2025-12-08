@@ -15,9 +15,10 @@ const SocialLogin = () => {
          googleSignUp()
          .then(result=>{
             console.log(result.user)
+            console.log(result.user.photoURL)
          
 
-             //create user for database
+            //  create user for database
 
             const userInfo={
                 displayName:result.user.displayName,
