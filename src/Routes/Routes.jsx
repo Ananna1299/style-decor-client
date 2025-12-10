@@ -13,6 +13,8 @@ import AdminRoute from "./AdminRoute";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import CreateService from "../Pages/Dashboard/CreateService/CreateService";
 import ServicesDisplay from "../Pages/ServicesDisplay/ServicesDisplay";
+import HandleServices from "../Pages/Dashboard/HandleServices/HandleServices";
+import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 
 
 export const router = createBrowserRouter([
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path:"service-display",
         element:<ServicesDisplay></ServicesDisplay>
+      },
+      {
+        path:"service-details/:id",
+        element:<ServiceDetails></ServiceDetails>
       }
 
     ]
@@ -72,6 +78,12 @@ export const router = createBrowserRouter([
         path:"create-service",
         element:<AdminRoute>
           <CreateService></CreateService>
+        </AdminRoute>
+      },
+      {
+        path:"handle-service",
+        element:<AdminRoute>
+         <HandleServices></HandleServices>
         </AdminRoute>
       }
     ]

@@ -4,7 +4,7 @@ import { IoIosMenu } from 'react-icons/io';
 import { NavLink, Outlet } from 'react-router';
 import Logo from '../Components/Logo/Logo';
 import useRole from '../Hooks/useRole';
-import { FaUsers, FaWpforms } from 'react-icons/fa';
+import { FaEdit, FaUsers, FaWpforms } from 'react-icons/fa';
 import background from "../assets/background.jpg"
 import Loading from '../Components/Loder/Loading';
 import { ImProfile } from 'react-icons/im';
@@ -99,6 +99,12 @@ const Dashboard = () => {
             <NavLink to="/dashboard/create-service" className="hover:bg-primary">
                 <FaWpforms size={20} title='Decoration Service / Packages' />
                 <p className="is-drawer-close:hidden">Decoration Service / Packages</p>
+            </NavLink>
+            </li>
+            <li>
+            <NavLink to="/dashboard/handle-service" className="hover:bg-primary">
+                 <FaEdit size={20} title='Edit / Delete Service '/>
+                <p className="is-drawer-close:hidden">Edit / Delete Services</p>
             </NavLink>
             </li>
 

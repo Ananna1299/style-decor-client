@@ -1,38 +1,33 @@
 import React, { useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router';
 
 const ServicesDisplay = () => {
     const axiosInstance=useAxios()
     const [searchText,setSearchText]=useState("")
     const [serviceType, setServiceType] = useState("");
-    const [budget, setBudget] = useState("");
-    const [minCost, setMinCost] = useState("");
-    const [maxCost, setMaxCost] = useState("");
+    // const [budget, setBudget] = useState("");
+    // const [minCost, setMinCost] = useState("");
+    // const [maxCost, setMaxCost] = useState("");
 
 
 
 
     const { data: services = [] } = useQuery({
-    queryKey: ['services',searchText,serviceType, minCost, maxCost],
+    queryKey: ['service',searchText,serviceType],
     queryFn: async () => {
-        const res = await axiosInstance.get(`/services?searchText=${searchText}&type=${serviceType}&min=${minCost}&max=${maxCost}`);
+        const res = await axiosInstance.get(`/services?searchText=${searchText}&type=${serviceType}`);
         console.log(res.data);
         return res.data;
     }
 });
 
-const handleBudgetChange=(value)=>{
-    setBudget(value);
-    console.log(value)
-     if (value.includes("-")) {
-        const valueSplit=value.split("-")
-        console.log(valueSplit[0],valueSplit[1])
-        setMinCost(valueSplit[0])
-         setMaxCost(valueSplit[1])
-
-     }
-}
+// const handleBudgetChange=(value)=>{
+//     setBudget(value);
+//     console.log(value)
+//      
+// }
 
 
  const categories = ["Home", "Wedding", "Office", "Seminar", "Meeting"];
@@ -86,8 +81,8 @@ const handleBudgetChange=(value)=>{
                 type="text"
                 placeholder="minBudget- maxBudget"
                 className="input input-bordered mb-4"
-                value={budget}
-                onChange={(e) => handleBudgetChange(e.target.value)}
+                // value={budget}
+                // onChange={(e) => handleBudgetChange(e.target.value)}
                 />
             </fieldset>
             </div>
@@ -101,6 +96,14 @@ const handleBudgetChange=(value)=>{
             key={index}
             className="bg-purple-50 border-3 border-purple-200 rounded-xl p-6 shadow-md hover:shadow-xl transition"
           >
+             {/* Image */}
+            <img
+              src={service.photo}
+              alt={service.serviceName}
+              className="w-full h-48 object-cover rounded-lg mb-4"
+            />
+
+
             {/* Service Name */}
             <h3 className="text-xl font-bold text-secondary mb-2">
               {service.serviceName}
@@ -121,11 +124,11 @@ const handleBudgetChange=(value)=>{
             <span className='font-bold text-gray-600'>{service.unit}</span></p>
 
             {/* Email */}
-            <p className="text-gray-500 text-xs"><span className='font-bold text-secondary'>Created by: </span>{service.email}</p>
+            <p className="text-gray-500 text-xs mb-5"><span className='font-bold text-secondary'>Created by: </span>{service.email}</p>
 
-            <button className="mt-4 w-full bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-200 text-secondary font-bold py-2 rounded-lg hover:cursor-pointer ">
+            <Link to={`/service-details/${service._id}`}  className=" w-full bg-gradient-to-br border-1 border-secondary from-pink-300 via-purple-300 to-indigo-200 text-secondary font-bold p-3 rounded-lg hover:cursor-pointer ">
               View Details
-            </button>
+            </Link>
           </div>
         ))}
       </div>
