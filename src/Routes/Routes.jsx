@@ -15,6 +15,8 @@ import CreateService from "../Pages/Dashboard/CreateService/CreateService";
 import ServicesDisplay from "../Pages/ServicesDisplay/ServicesDisplay";
 import HandleServices from "../Pages/Dashboard/HandleServices/HandleServices";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
+import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -85,7 +87,15 @@ export const router = createBrowserRouter([
         element:<AdminRoute>
          <HandleServices></HandleServices>
         </AdminRoute>
-      }
+      },
+      {
+        path:"my-bookings",
+        element:<MyBookings></MyBookings>
+      },
+      {
+        path:"payment/:bookingId",
+        element:<Payment></Payment>
+      },
     ]
     }
 ]);

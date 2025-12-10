@@ -22,7 +22,7 @@ const CreateService = () => {
      const categories = ["Home", "Wedding", "Office", "Seminar", "Meeting"];
 
 
-    // OPTIMISTIC MUTATION — This is the magic
+    
     const { mutate,isPending  } = useMutation({
         mutationFn: (newService) => axiosSecure.post('/services', newService),
 

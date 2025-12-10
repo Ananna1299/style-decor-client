@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import Loading from '../../../Components/Loder/Loading';
 
 const HandleServices = () => {
     const modalRef = useRef(null);
@@ -28,7 +29,7 @@ const HandleServices = () => {
     // Open modal 
     const openEditModal = (service) => {
         setSelectedService(service);
-        // Pre-fill form
+        
         setValue('serviceName', service.serviceName);
         setValue('cost', service.cost);
         setValue('unit', service.unit);
@@ -111,7 +112,7 @@ const HandleServices = () => {
         updateMutation.mutate(updatedData);
     };
 
-    if (isLoading) return <div className="text-center py-10">Loading services...</div>;
+    if (isLoading) return <Loading></Loading>;
 
     return (
         <div className="my-8 px-4">
@@ -225,7 +226,7 @@ const HandleServices = () => {
                             <input
                                 type="number"
                                 className="input input-bordered w-full"
-                                {...register("cost", { required: "Required", min: 0 })}
+                                {...register("cost", { required:  "Required", min: 0 })}
                             />
                             {errors.cost && <p className="text-red-500 text-sm">{errors.cost.message}</p>}
                         </div>
@@ -250,7 +251,7 @@ const HandleServices = () => {
                             <label className="label font-bold">Description</label>
                             <textarea
                                 className="textarea textarea-bordered w-full h-28"
-                                {...register("description", { required: "Required" })}
+                                {...register("description", { required:  "Required"})}
                             />
                             {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
                         </div>

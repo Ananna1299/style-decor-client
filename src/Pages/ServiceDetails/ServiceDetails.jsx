@@ -1,17 +1,26 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router';
+import React, { useRef, useState } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import useAxios from '../../Hooks/useAxios';
 import Loading from '../../Components/Loder/Loading';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import ErrorPage from '../../Components/ErrorPage/ErrorPage';
+import useAuth from '../../Hooks/useAuth';
+import { useForm } from 'react-hook-form';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const ServiceDetails = () => {
     const {id}=useParams()
     //console.log(id)
     const axiosInstance = useAxios();
     const navigate = useNavigate();
+     const modalRef = useRef(null);
+     const {user}=useAuth()
+     const axiosSecure=useAxiosSecure()
 
-
+  const [selectedService, setSelectedService] = useState(null);
+  const { register, handleSubmit, reset, setValue , formState: { errors }} = useForm();
+    const queryClient = useQueryClient();
 
 
   const { data: service, isLoading, isError } = useQuery({
@@ -21,6 +30,114 @@ const ServiceDetails = () => {
       return res.data;
     },
   });
+
+
+  
+    const { mutate } = useMutation({
+        mutationFn: (newBooking) => axiosSecure.post('/bookings', newBooking),
+
+        
+        onMutate: async (newBooking) => {
+            await queryClient.cancelQueries({ queryKey: ['bookings'] });
+
+            const previousServices = queryClient.getQueryData(['bookings']);
+
+            queryClient.setQueryData(['bookings'], (old = []) => [
+                {
+                    ...newBooking,
+                    _id: Date.now().toString(),
+                    createdAt: new Date().toISOString(),
+                },
+                ...old,
+            ]);
+
+            return { previousServices };
+        },
+
+        
+        onError: (err, newService, context) => {
+            queryClient.setQueryData(['bookings'], context?.previousServices);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Failed!',
+                text: err.response?.data?.message || 'Could not create booking',
+                timer: 3000,
+            });
+        },
+
+     
+        onSettled: () => {
+            queryClient.invalidateQueries({ queryKey: ['bookings'] });
+             closeModal();
+        },
+
+        // 4. Success → show toast and reset form
+        onSuccess: () => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Created!',
+                text: 'Booking added successfully',
+                timer: 2000,
+                showConfirmButton: false,
+            });
+            reset();
+        },
+    });
+
+  // Open modal 
+    const openEditModal = (service) => {
+      if (!user){
+        return navigate("/login")
+      }
+        setSelectedService(service);
+    
+        setValue('serviceName', service.serviceName);
+        setValue('cost', service.cost);
+        setValue('unit', service.unit);
+        setValue('category', service.category);
+        setValue('description', service.description);
+
+        setValue("userName", user.displayName || "");
+        setValue("userEmail", user.email || "");
+       
+        modalRef.current.showModal();
+    };
+    //close modal
+    const closeModal = () => {
+        modalRef.current.close();
+        setSelectedService(null);
+        reset();
+    };
+
+   const onSubmit = (data) => {
+       //console.log(data)
+        const quantity = Number(data.quantity);
+        const costPerUnit = Number(data.cost);
+
+        const totalCost = costPerUnit * quantity;
+       
+       const bookingData = {
+            serviceName: data.serviceName,
+            totalCost: totalCost,
+            unit: data.unit,
+            category: data.category,
+            description: data.description,
+            clientName:data.userName,
+            clientEmail:data.userEmail,
+            location:data.location,
+            bookingDate:data.bookingDate,
+            status:"Payment not cleared"
+            };
+         console.log(bookingData)
+         mutate(bookingData);
+        
+    };
+
+
+
+
+
 
   if (isLoading) return <Loading></Loading>;
   if (isError) return <ErrorPage></ErrorPage>;
@@ -92,7 +209,7 @@ const ServiceDetails = () => {
         </button>
 
         {/* Booking Button */}
-        <button
+        <button onClick={() => openEditModal(service)}
           className="px-8 py-3 font-display text-2xl rounded-xl bg-secondary text-white font-semibold hover:bg-purple-700 cursor-pointer shadow-lg "
         >
           Book Now
@@ -101,6 +218,132 @@ const ServiceDetails = () => {
       </div>
     </div>
   </div>
+
+  {/* Edit Modal */}
+            <dialog ref={modalRef} className="modal">
+                <div className="modal-box w-11/12 max-w-2xl bg-pink-50 ">
+                    <h3 className="font-bold text-3xl text-secondary mb-6 font-display">Edit Service</h3>
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                        <div>
+                            <label className="label font-bold font-display text-secondary text-2xl">Service Name</label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full"
+                                {...register("serviceName")} disabled
+                            />
+                        </div>
+
+                        <div>
+                            <label className="label font-bold font-display text-secondary text-2xl">Cost</label>
+                            <input
+                                type="number"
+                                className="input input-bordered w-full"
+                                {...register("cost")} disabled
+                            />
+                        </div>
+
+                        <div>
+                            <label className="label font-bold font-display text-secondary text-2xl">Unit</label>
+                            <input className="select select-bordered w-full" {...register("unit")}
+                            disabled
+                            />
+                        </div>
+
+                        <div>
+                            <label className="label font-bold font-display text-secondary text-2xl">Category</label>
+                            <input className="select select-bordered w-full" {...register("category")}
+                            disabled/>
+                                
+                        </div>
+
+                        <div>
+                            <label className="label font-bold font-display text-secondary text-2xl">Description</label>
+                            <textarea
+                                className="textarea textarea-bordered w-full h-28"
+                                {...register("description")} disabled
+                            />
+                            
+                        </div>
+
+
+                        {/* user info */}
+                        <div>
+                              <label className="label font-bold font-display text-secondary text-2xl">Client Name</label>
+                              <input
+                                type="text"
+                                className="input input-bordered w-full"
+                                {...register("userName")}
+                                readOnly   
+                              />
+                        </div>
+
+                        <div>
+                              <label className="label font-bold font-display text-secondary text-2xl">Client Email</label>
+                              <input
+                                type="email"
+                                className="input input-bordered w-full"
+                                {...register("userEmail")}
+                                readOnly
+                              />
+                        </div>
+
+                        <div>
+                              <label className="label font-bold font-display text-secondary text-2xl">Location</label>
+                              <input
+                                type="text"
+                                className="input input-bordered w-full"
+                                {...register("location",{ required: "Required" })}
+                              />
+                              {errors.location && <p className="text-red-500 text-sm">
+                                {errors.location.message}</p>}
+                        </div>
+
+                        <div>
+                              <label className="label font-bold font-display text-secondary text-2xl">Booking Date</label>
+                              <input
+                                type="date"
+                                className="input input-bordered w-full"
+                                {...register("bookingDate", { required: true })}
+                              />
+
+                               {errors.bookingDate && <p className="text-red-500 text-sm">
+                                {errors.bookingDate.message}</p>}
+                          </div>
+
+                          <div>
+                              <label className="label font-bold font-display text-secondary text-2xl">Quantity (floor / meter / sq-ft)</label>
+                              <input
+                                type="number"
+                                min="1"
+                                className="input input-bordered w-full"
+                                {...register("quantity", {
+                                  required: "Quantity is required",
+                                  min: { value: 1, message: "Minimum value is 1" }
+                                })}
+                              />
+                              {errors.quantity && (
+                                <p className="text-red-500 text-sm">{errors.quantity.message}</p>
+                              )}
+                          </div>
+                        
+                        
+                        <div className="modal-action">
+                                <button 
+                                    type="submit" 
+                                    className="btn btn-secondary">
+                                    Book
+                                </button>
+                                <button type="button" className="btn" onClick={closeModal}>
+                                    Cancel
+                                </button>
+                            </div>
+                    </form>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
 </div>
 
     );
