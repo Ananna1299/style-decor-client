@@ -4,7 +4,7 @@ import { IoIosMenu } from 'react-icons/io';
 import { NavLink, Outlet } from 'react-router';
 import Logo from '../Components/Logo/Logo';
 import useRole from '../Hooks/useRole';
-import { FaEdit, FaUsers, FaWpforms } from 'react-icons/fa';
+import { FaEdit, FaHistory, FaUsers, FaWpforms } from 'react-icons/fa';
 import background from "../assets/background.jpg"
 import Loading from '../Components/Loder/Loading';
 import { ImProfile } from 'react-icons/im';
@@ -93,6 +93,15 @@ const Dashboard = () => {
           <NavLink to="/dashboard/my-bookings" className='hover:bg-primary'>
              <TbBrandBooking size={20} title='My Bookings' />
           <p  className="is-drawer-close:hidden">My Bookings</p>
+          </NavLink>
+        </li>
+
+
+        {/* my bookings history */}
+        <li >
+          <NavLink to="/dashboard/payment-history" className='hover:bg-primary'>
+             <FaHistory size={20} title='My Payment History'/>  
+          <p  className="is-drawer-close:hidden">My Payment History</p>
           </NavLink>
         </li>
 

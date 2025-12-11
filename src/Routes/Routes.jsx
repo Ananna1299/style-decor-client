@@ -19,6 +19,8 @@ import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentSuccessful from "../Pages/Dashboard/PaymentSuccessful/PaymentSuccessful";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import PaymentCancel from "../Pages/Dashboard/PaymentCancel/PaymentCancel";
+import UserRoute from "./UserRoute";
 
 
 export const router = createBrowserRouter([
@@ -105,9 +107,14 @@ export const router = createBrowserRouter([
       },
       {
         path:"payment-history",
-        element:<PaymentHistory></PaymentHistory>
+        element:
+          <PaymentHistory></PaymentHistory>
       
       },
+      {
+        path:"payment-cancel",
+        element:<PaymentCancel></PaymentCancel>
+      }
     ]
     }
 ]);

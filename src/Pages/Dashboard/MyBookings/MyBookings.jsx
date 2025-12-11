@@ -174,6 +174,7 @@ const MyBookings = () => {
                                 <button
                                         onClick={() => openEditModal(b)}
                                         className="btn btn-sm btn-outline btn-secondary"
+                                         disabled={b.paymentStatus === "paid"}
                                     >
                                         Edit
                                     </button>
@@ -223,7 +224,7 @@ const MyBookings = () => {
                                 <div>
                                         {
                                             b.paymentStatus==="paid"? 
-                                            <span className='text-green-500'>Paid</span>:
+                                            <span className='text-green-600 text-center'>Paid</span>:
                                             <Link to={`/dashboard/payment/${b._id}`} className='btn btn-square bg-primary text-black'>Pay</Link>
 
                                         }
@@ -231,6 +232,7 @@ const MyBookings = () => {
                                 <button
                                         onClick={() => openEditModal(b)}
                                         className="btn btn-sm btn-outline btn-secondary"
+                                         disabled={b.paymentStatus === "paid"}
                                     >
                                         Edit
                                     </button>
