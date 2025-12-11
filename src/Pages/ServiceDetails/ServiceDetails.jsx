@@ -119,6 +119,8 @@ const ServiceDetails = () => {
        
        const bookingData = {
             serviceName: data.serviceName,
+            quantity: Number(data.quantity),
+            costPerUnit:Number(data.cost),
             totalCost: totalCost,
             unit: data.unit,
             category: data.category,
@@ -168,7 +170,7 @@ const ServiceDetails = () => {
           <p className="text-gray-700 font-medium">{service.category}</p>
         </div>
 
-        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg transition">
+        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg ">
           <h3 className="text-lg font-semibold text-purple-900 mb-1">Cost</h3>
           <p className="text-gray-700 font-medium">{service.cost} BDT</p>
         </div>

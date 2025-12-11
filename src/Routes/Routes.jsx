@@ -17,6 +17,8 @@ import HandleServices from "../Pages/Dashboard/HandleServices/HandleServices";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentSuccessful from "../Pages/Dashboard/PaymentSuccessful/PaymentSuccessful";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -95,6 +97,16 @@ export const router = createBrowserRouter([
       {
         path:"payment/:bookingId",
         element:<Payment></Payment>
+      },
+
+      {
+        path:"payment-success",
+        element:<PaymentSuccessful></PaymentSuccessful>
+      },
+      {
+        path:"payment-history",
+        element:<PaymentHistory></PaymentHistory>
+      
       },
     ]
     }
