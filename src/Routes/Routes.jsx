@@ -21,6 +21,8 @@ import PaymentSuccessful from "../Pages/Dashboard/PaymentSuccessful/PaymentSucce
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import PaymentCancel from "../Pages/Dashboard/PaymentCancel/PaymentCancel";
 import UserRoute from "./UserRoute";
+import ApproveDecorators from "../Pages/Dashboard/ApproveDecorators/ApproveDecorators";
+
 
 
 export const router = createBrowserRouter([
@@ -43,7 +45,8 @@ export const router = createBrowserRouter([
       {
         path:"service-details/:id",
         element:<ServiceDetails></ServiceDetails>
-      }
+      },
+      
 
     ]
   },
@@ -107,13 +110,21 @@ export const router = createBrowserRouter([
       },
       {
         path:"payment-history",
-        element:
+        element:<UserRoute>
           <PaymentHistory></PaymentHistory>
+        </UserRoute>
+          
       
       },
       {
         path:"payment-cancel",
         element:<PaymentCancel></PaymentCancel>
+      },
+      {
+        path:"approve-decorators",
+        element:<AdminRoute>
+          <ApproveDecorators></ApproveDecorators>
+        </AdminRoute>
       }
     ]
     }

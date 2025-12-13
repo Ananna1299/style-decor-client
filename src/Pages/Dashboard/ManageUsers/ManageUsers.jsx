@@ -93,6 +93,38 @@ const handleRemoveAdmin=(user)=>{
 
 
 
+//send pending req for create decorator
+const handleCreateDecorator = (user) => {
+  Swal.fire({
+    title: "Create Decorator?",
+    text: "This user will be sent for admin approval.",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonText: "Yes, create",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure
+        .post("/decorators", {
+          userId: user._id,
+          name: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        })
+        .then((res) => {
+          if (res.data?.insertedId) {
+            Swal.fire("Success!", "Decorator created status: pending", "success");
+          } else {
+            Swal.fire("Info", res.data.message, "info");
+          }
+        });
+    }
+  });
+};
+
+
+
+
+
 
 
 
@@ -169,10 +201,24 @@ const handleRemoveAdmin=(user)=>{
 
                 <td className='space-x-2'>
                                         {user.role==="admin"?
-                                        <button onClick={()=>handleRemoveAdmin(user)}  className="btn btn-secondary btn-square hover:bg-primary"><FaUserMinus /></button>:
+                                        <button onClick={()=>handleRemoveAdmin(user)}  className="btn btn-secondary btn-sm  hover:bg-primary">Remove Admin</button>:
                                         <button onClick={()=>handleMakeAdmin(user)}
-                                           className="btn btn-square btn-secondary hover:bg-primary"><FaUserCheck /></button>
+                                         disabled={user.role === "rider"} 
+                                           className="btn btn-sm btn-secondary hover:bg-primary">
+                                            Make Admin
+                                           </button>
                                         }
+
+
+
+                                        {user.role === "user" && (
+                                        <button
+                                        onClick={() => handleCreateDecorator(user)}
+                                        className="btn bg-primary btn-sm hover:bg-secondary text-white"
+                                        >
+                                        Make Decorator
+                                        </button>
+  )}
                                           
                 
                                          

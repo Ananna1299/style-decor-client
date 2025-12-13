@@ -98,12 +98,17 @@ const Dashboard = () => {
 
 
         {/* my bookings history */}
-        <li >
+        {role ==="user" && (
+          <>
+          <li >
           <NavLink to="/dashboard/payment-history" className='hover:bg-primary'>
              <FaHistory size={20} title='My Payment History'/>  
           <p  className="is-drawer-close:hidden">My Payment History</p>
           </NavLink>
         </li>
+          </>
+        )}
+        
 
         {role === "admin" && (
         <>
@@ -122,8 +127,14 @@ const Dashboard = () => {
             </li>
             <li>
             <NavLink to="/dashboard/handle-service" className="hover:bg-primary">
-                <FaWpforms  /> <FaEdit size={20} title='Edit / Delete Service '/>
+                <FaEdit size={20} title='Edit / Delete Service '/>
                 <p className="is-drawer-close:hidden">Edit / Delete Services</p>
+            </NavLink>
+            </li>
+            <li>
+            <NavLink to="/dashboard/approve-decorators" className="hover:bg-primary">
+                <FaEdit size={20} title='Approve/Reject Decorators Request '/>
+                <p className="is-drawer-close:hidden">Approve/Reject Decorator Request</p>
             </NavLink>
             </li>
 

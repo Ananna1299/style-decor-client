@@ -54,7 +54,7 @@ const PaymentHistory = () => {
   </div>
 
   {/* Mobile Cards */}
-  <div className="md:hidden space-y-4">
+  <div className="lg:hidden space-y-4">
     {payment.map((history, index) => (
       <div
         key={index}
