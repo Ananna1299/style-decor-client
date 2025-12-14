@@ -157,6 +157,19 @@ const Dashboard = () => {
         </>
         )}
 
+
+        {/* my bookings history */}
+        {role ==="decorator" && (
+          <>
+          <li >
+          <NavLink to="/dashboard/" className='hover:bg-primary'>
+             <FaHistory size={20} title='My Payment History'/>  
+          <p  className="is-drawer-close:hidden">My Payment History</p>
+          </NavLink>
+        </li>
+          </>
+        )}
+
       </ul>
     </div>
   </div>

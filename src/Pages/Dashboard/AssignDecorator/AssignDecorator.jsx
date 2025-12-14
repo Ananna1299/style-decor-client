@@ -59,6 +59,17 @@ const AssignDecorator = () => {
       setSelectedBooking(null);
       queryClient.invalidateQueries({ queryKey: ["bookings","pending-decorator"] });
     },
+
+    onError: (error) => {
+    modalRef.current.close();
+    Swal.fire({
+      icon: "error",
+      title: "Unavailable",
+      text:
+        error.response?.data?.message ||
+        "Decorator already assigned on this date. Please choose another decorator.",
+    });
+  },
   });
 
 

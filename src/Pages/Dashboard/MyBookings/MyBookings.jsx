@@ -51,7 +51,7 @@ const MyBookings = () => {
 
      const updateMutation = useMutation({
         mutationFn: async (updatedData) => {
-            const res = await axiosSecure.patch(`/bookings/${selectedBooking._id}`, updatedData);
+            const res = await axiosSecure.patch(`/bookings/${selectedBooking._id}/mybooking`, updatedData);
             return res.data;
         },
         onMutate: async (updatedData) => {

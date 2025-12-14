@@ -24,6 +24,8 @@ import UserRoute from "./UserRoute";
 import ApproveDecorators from "../Pages/Dashboard/ApproveDecorators/ApproveDecorators";
 import DeleteDisabled from "../Pages/Dashboard/DeleteDisabled/DeleteDisabled";
 import AssignDecorator from "../Pages/Dashboard/AssignDecorator/AssignDecorator";
+import DecoratorRoute from "./DecoratorRoute";
+import AssignedWork from "../Pages/Dashboard/AssignedWork/AssignedWork";
 
 
 
@@ -139,6 +141,12 @@ export const router = createBrowserRouter([
         element:<AdminRoute>
           <AssignDecorator></AssignDecorator>
         </AdminRoute>
+      },
+      {
+        path:"assigned-work",
+        element:<DecoratorRoute>
+          <AssignedWork></AssignedWork>
+        </DecoratorRoute>
       }
     ]
     }
