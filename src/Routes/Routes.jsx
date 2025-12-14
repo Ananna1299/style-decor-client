@@ -22,6 +22,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import PaymentCancel from "../Pages/Dashboard/PaymentCancel/PaymentCancel";
 import UserRoute from "./UserRoute";
 import ApproveDecorators from "../Pages/Dashboard/ApproveDecorators/ApproveDecorators";
+import DeleteDisabled from "../Pages/Dashboard/DeleteDisabled/DeleteDisabled";
 
 
 
@@ -124,6 +125,12 @@ export const router = createBrowserRouter([
         path:"approve-decorators",
         element:<AdminRoute>
           <ApproveDecorators></ApproveDecorators>
+        </AdminRoute>
+      },
+      {
+        path:"delete-decorators",
+        element:<AdminRoute>
+          <DeleteDisabled></DeleteDisabled>
         </AdminRoute>
       }
     ]

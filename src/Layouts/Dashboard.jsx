@@ -9,6 +9,8 @@ import background from "../assets/background.jpg"
 import Loading from '../Components/Loder/Loading';
 import { ImProfile } from 'react-icons/im';
 import { TbBrandBooking } from 'react-icons/tb';
+import { TiTick } from 'react-icons/ti';
+import { MdDeleteForever } from 'react-icons/md';
 
 const Dashboard = () => {
     const {user,loading}=useAuth()
@@ -133,8 +135,14 @@ const Dashboard = () => {
             </li>
             <li>
             <NavLink to="/dashboard/approve-decorators" className="hover:bg-primary">
-                <FaEdit size={20} title='Approve/Reject Decorators Request '/>
+                <TiTick size={25} title='Approve/Reject Decorators Request ' />
                 <p className="is-drawer-close:hidden">Approve/Reject Decorator Request</p>
+            </NavLink>
+            </li>
+            <li>
+            <NavLink to="/dashboard/delete-decorators" className="hover:bg-primary">
+                 <MdDeleteForever size={25} title='Delete/Disabled Decorators' />
+                <p className="is-drawer-close:hidden">Delete/Disabled Decorator</p>
             </NavLink>
             </li>
 
