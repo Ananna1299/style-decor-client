@@ -10,7 +10,7 @@ import Loading from '../Components/Loder/Loading';
 import { ImProfile } from 'react-icons/im';
 import { TbBrandBooking } from 'react-icons/tb';
 import { TiTick } from 'react-icons/ti';
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDeleteForever, MdOutlineAssignmentReturned } from 'react-icons/md';
 
 const Dashboard = () => {
     const {user,loading}=useAuth()
@@ -145,6 +145,14 @@ const Dashboard = () => {
                 <p className="is-drawer-close:hidden">Delete/Disabled Decorator</p>
             </NavLink>
             </li>
+
+            <li>
+            <NavLink to="/dashboard/assign-decorators" className="hover:bg-primary">
+                 <MdOutlineAssignmentReturned size={20} title='Assign Decorators' />
+                <p className="is-drawer-close:hidden">Assign Decorator</p>
+            </NavLink>
+            </li>
+
 
         </>
         )}
