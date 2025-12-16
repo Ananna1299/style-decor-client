@@ -10,7 +10,8 @@ import Loading from '../Components/Loder/Loading';
 import { ImProfile } from 'react-icons/im';
 import { TbBrandBooking } from 'react-icons/tb';
 import { TiTick } from 'react-icons/ti';
-import { MdDeleteForever, MdOutlineAssignmentReturned } from 'react-icons/md';
+import { MdAssignmentReturned, MdDeleteForever, MdOutlineAssignmentReturned } from 'react-icons/md';
+import { RiCalendarScheduleFill } from 'react-icons/ri';
 
 const Dashboard = () => {
     const {user,loading}=useAuth()
@@ -158,13 +159,20 @@ const Dashboard = () => {
         )}
 
 
-        {/* my bookings history */}
+        {/*assigned work*/}
         {role ==="decorator" && (
           <>
           <li >
-          <NavLink to="/dashboard/" className='hover:bg-primary'>
-             <FaHistory size={20} title='My Payment History'/>  
-          <p  className="is-drawer-close:hidden">My Payment History</p>
+          <NavLink to="/dashboard/assigned-work" className='hover:bg-primary'>
+             <MdAssignmentReturned size={20} title='My Assigned Work'/> 
+          <p  className="is-drawer-close:hidden">Assigned Work</p>
+          </NavLink>
+        </li>
+
+        <li >
+          <NavLink to="/dashboard/todays-schedule" className='hover:bg-primary'>
+              <RiCalendarScheduleFill size={20} title="Today's Schedule "/>
+          <p  className="is-drawer-close:hidden">Today's Schedule</p>
           </NavLink>
         </li>
           </>

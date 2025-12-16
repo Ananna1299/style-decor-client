@@ -26,6 +26,7 @@ import DeleteDisabled from "../Pages/Dashboard/DeleteDisabled/DeleteDisabled";
 import AssignDecorator from "../Pages/Dashboard/AssignDecorator/AssignDecorator";
 import DecoratorRoute from "./DecoratorRoute";
 import AssignedWork from "../Pages/Dashboard/AssignedWork/AssignedWork";
+import TodaySchedule from "../Pages/Dashboard/TodaySchedule/TodaySchedule";
 
 
 
@@ -146,6 +147,12 @@ export const router = createBrowserRouter([
         path:"assigned-work",
         element:<DecoratorRoute>
           <AssignedWork></AssignedWork>
+        </DecoratorRoute>
+      },
+      {
+        path:"todays-schedule",
+        element:<DecoratorRoute>
+        <TodaySchedule></TodaySchedule>
         </DecoratorRoute>
       }
     ]
