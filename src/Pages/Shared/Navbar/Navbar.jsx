@@ -18,15 +18,15 @@ const Navbar = () => {
   }
 
     const links=<>
-    <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/service-display">Services</NavLink></li>
-      <li><NavLink to="/coverage">Service Coverage</NavLink></li>
-      <li><NavLink to="/about">About Us</NavLink></li>
-      <li><NavLink>Contact</NavLink></li>
+    <li><NavLink to="/" className="text-secondary font-bold hover:text-pink-700">Home</NavLink></li>
+    <li><NavLink to="/service-display" className="text-secondary font-bold hover:text-pink-700">Services</NavLink></li>
+      <li><NavLink to="/coverage" className="text-secondary font-bold hover:text-pink-700">Service Coverage</NavLink></li>
+      <li><NavLink to="/about" className="text-secondary font-bold hover:text-pink-700">About Us</NavLink></li>
+      
         
         {
           user && <>
-          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+          <li><NavLink to="/dashboard" className="text-secondary font-bold hover:text-pink-700">Dashboard</NavLink></li>
           
           </>
         }

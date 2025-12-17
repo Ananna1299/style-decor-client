@@ -11,7 +11,7 @@ import { ImProfile } from 'react-icons/im';
 import { TbBrandBooking } from 'react-icons/tb';
 import { TiTick } from 'react-icons/ti';
 import { MdAssignmentReturned, MdDeleteForever, MdOutlineAssignmentReturned } from 'react-icons/md';
-import { RiCalendarScheduleFill } from 'react-icons/ri';
+import { RiCalendarScheduleFill, RiSecurePaymentFill } from 'react-icons/ri';
 
 const Dashboard = () => {
     const {user,loading}=useAuth()
@@ -173,6 +173,13 @@ const Dashboard = () => {
           <NavLink to="/dashboard/todays-schedule" className='hover:bg-primary'>
               <RiCalendarScheduleFill size={20} title="Today's Schedule "/>
           <p  className="is-drawer-close:hidden">Today's Schedule</p>
+          </NavLink>
+        </li>
+
+         <li >
+          <NavLink to="/dashboard/completed-works" className='hover:bg-primary'>
+              <RiSecurePaymentFill size={20} title="Completed Works "/>
+          <p  className="is-drawer-close:hidden">Completed Works</p>
           </NavLink>
         </li>
           </>

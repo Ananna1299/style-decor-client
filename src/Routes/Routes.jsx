@@ -27,6 +27,7 @@ import AssignDecorator from "../Pages/Dashboard/AssignDecorator/AssignDecorator"
 import DecoratorRoute from "./DecoratorRoute";
 import AssignedWork from "../Pages/Dashboard/AssignedWork/AssignedWork";
 import TodaySchedule from "../Pages/Dashboard/TodaySchedule/TodaySchedule";
+import CompletedWorks from "../Pages/Dashboard/CompleteWorks/CompletedWorks";
 
 
 
@@ -153,6 +154,12 @@ export const router = createBrowserRouter([
         path:"todays-schedule",
         element:<DecoratorRoute>
         <TodaySchedule></TodaySchedule>
+        </DecoratorRoute>
+      },
+      {
+        path:"completed-works",
+        element:<DecoratorRoute>
+          <CompletedWorks></CompletedWorks>
         </DecoratorRoute>
       }
     ]

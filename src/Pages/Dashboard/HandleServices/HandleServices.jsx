@@ -143,7 +143,7 @@ const HandleServices = () => {
                                 <td>{service.unit}</td>
                                 <td>{service.email}</td>
                                 <td className="max-w-xs truncate">{service.description}</td>
-                                <td className="space-x-2">
+                                <td className="space-x-2 flex">
                                     <button
                                         onClick={() => openEditModal(service)}
                                         className="btn btn-sm btn-outline btn-secondary"
