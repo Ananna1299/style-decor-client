@@ -28,6 +28,8 @@ import DecoratorRoute from "./DecoratorRoute";
 import AssignedWork from "../Pages/Dashboard/AssignedWork/AssignedWork";
 import TodaySchedule from "../Pages/Dashboard/TodaySchedule/TodaySchedule";
 import CompletedWorks from "../Pages/Dashboard/CompleteWorks/CompletedWorks";
+import Coverage from "../Pages/Coverage/Coverage";
+import Revenue from "../Pages/Dashboard/Revenue/Revenue";
 
 
 
@@ -52,6 +54,11 @@ export const router = createBrowserRouter([
         path:"service-details/:id",
         element:<ServiceDetails></ServiceDetails>
       },
+      {
+        path:"coverage",
+        element:<Coverage></Coverage>,
+        loader: ()=> fetch("../coveredAreas.json")
+      }
       
 
     ]
@@ -78,6 +85,9 @@ export const router = createBrowserRouter([
       <Dashboard></Dashboard>
     </PrivateRoute>,
     children:[
+       { index: true, 
+        element:<DashboardHome></DashboardHome>
+       },
       {
         path:"my-profile",
         element:<MyProfile></MyProfile>
@@ -161,6 +171,12 @@ export const router = createBrowserRouter([
         element:<DecoratorRoute>
           <CompletedWorks></CompletedWorks>
         </DecoratorRoute>
+      },
+      {
+        path:"revenue",
+        element:<AdminRoute>
+          <Revenue></Revenue>
+        </AdminRoute>
       }
     ]
     }

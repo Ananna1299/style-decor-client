@@ -152,7 +152,7 @@ const handleCreateDecorator = (user) => {
             </label>
 
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto hidden lg:block">
             <table className="table">
                 {/* head */}
                 <thead>
@@ -239,6 +239,82 @@ const handleCreateDecorator = (user) => {
     
   </table>
 </div>
+
+
+
+{/* mobile */}
+
+  <div className="lg:hidden space-y-5 mt-6">
+  {users.map((user) => (
+    <div
+      key={user._id}
+      className="
+        bg-white
+        rounded-2xl
+        border border-purple-100
+        p-5
+        shadow-sm
+      "
+    >
+    
+      <div className="flex items-center gap-4">
+        <img
+          src={user.photoURL}
+          alt="user"
+          className="w-14 h-14 rounded-xl object-cover"
+        />
+
+        <div className="flex-1">
+          <p className="font-semibold text-purple-800">
+            {user.displayName}
+          </p>
+          <p className="text-xs text-gray-500">{user.email}</p>
+        </div>
+
+        <span
+          className={`px-3 py-1 rounded-full text-xs font-medium
+            ${
+              user.role === "admin"
+                ? "bg-purple-100 text-purple-700"
+                : "bg-gray-100 text-gray-600"
+            }`}
+        >
+          {user.role}
+        </span>
+      </div>
+
+      
+      <div className="mt-5 flex flex-wrap gap-2">
+        {user.role === "admin" ? (
+          <button
+            onClick={() => handleRemoveAdmin(user)}
+            className="btn btn-secondary btn-sm flex-1"
+          >
+            Remove Admin
+          </button>
+        ) : (
+          <button
+            onClick={() => handleMakeAdmin(user)}
+            disabled={user.role === "rider"}
+            className="btn btn-secondary btn-sm flex-1"
+          >
+            Make Admin
+          </button>
+        )}
+
+        {user.role === "user" && (
+          <button
+            onClick={() => handleCreateDecorator(user)}
+            className="btn bg-primary btn-sm text-white flex-1"
+          >
+            Make Decorator
+          </button>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
             
         </div>
     );

@@ -12,6 +12,7 @@ import { TbBrandBooking } from 'react-icons/tb';
 import { TiTick } from 'react-icons/ti';
 import { MdAssignmentReturned, MdDeleteForever, MdOutlineAssignmentReturned } from 'react-icons/md';
 import { RiCalendarScheduleFill, RiSecurePaymentFill } from 'react-icons/ri';
+import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 
 const Dashboard = () => {
     const {user,loading}=useAuth()
@@ -151,6 +152,13 @@ const Dashboard = () => {
             <NavLink to="/dashboard/assign-decorators" className="hover:bg-primary">
                  <MdOutlineAssignmentReturned size={20} title='Assign Decorators' />
                 <p className="is-drawer-close:hidden">Assign Decorator</p>
+            </NavLink>
+            </li>
+
+            <li>
+            <NavLink to="/dashboard/revenue" className="hover:bg-primary">
+                 <FaBangladeshiTakaSign size={20} title='Revenue'/>
+                <p className="is-drawer-close:hidden">Revenue</p>
             </NavLink>
             </li>
 

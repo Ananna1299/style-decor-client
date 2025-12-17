@@ -5,7 +5,7 @@ const AboutUs = () => {
     return (
          <div className="w-full  py-20">
       
-      {/* Top heading */}
+     
       <div className="text-center max-w-2xl mx-auto mb-16">
         <h2 className="text-4xl font-bold text-cyan-800">About Us</h2>
         <p className="text-secondary mt-4">
@@ -13,10 +13,10 @@ const AboutUs = () => {
         </p>
       </div>
 
-      {/* Content section */}
+      
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 px-5">
 
-        {/* Left text card */}
+      
         <div className="bg-white shadow-md rounded-xl p-10">
           <h3 className="text-3xl font-bold text-secondary mb-4">
             We’re here to make every decoration experience effortless and beautiful.
@@ -35,7 +35,7 @@ const AboutUs = () => {
             </p>
         </div>
 
-        {/* Right image */}
+        
         <div className="flex items-center justify-center">
           <img
             src={about}

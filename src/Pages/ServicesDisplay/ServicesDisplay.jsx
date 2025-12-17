@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
-
+import img from "../../assets/leaf.png"
 const ServicesDisplay = () => {
     const axiosInstance=useAxios()
     const [searchText,setSearchText]=useState("")
@@ -33,9 +33,10 @@ const ServicesDisplay = () => {
  const categories = ["Home", "Wedding", "Office", "Seminar", "Meeting"];
 
     return (
-         <div className="mx-10 my-10">
-      <h2 className="text-3xl font-extrabold text-secondary text-center mb-10">
+         <div className="mx-10 my-20">
+      <h2 className="text-4xl font-bold text-cyan-800 text-center mb-10">
         Our Decoration Services
+       
       </h2>
       <div className='flex flex-col lg:flex-row justify-between gap-4'>
         <div className='flex-1'>
@@ -94,7 +95,8 @@ const ServicesDisplay = () => {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-purple-50 border-3 border-purple-200 rounded-xl p-6 shadow-md hover:shadow-xl transition"
+            className=" bg-cover bg-center bg-no-repeat  border-3 border-purple-200 rounded-xl p-6 shadow-md hover:shadow-xl"
+             style={{ backgroundImage: `url(${img})` }}
           >
              {/* Image */}
             <img
