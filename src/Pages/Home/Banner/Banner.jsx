@@ -84,7 +84,7 @@ const Banner = () => {
                   transition={{duration:2}}
       
       className="relative z-10 max-w-4xl mx-auto">
-        <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-secondary drop-shadow-lg">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-secondary drop-shadow-lg font-display">
           Transform Your Space with Effortless Elegance
         </h1>
         <p className="mt-6 text-lg text-pink-800 font-medium drop-shadow-md">
