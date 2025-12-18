@@ -31,6 +31,7 @@ import CompletedWorks from "../Pages/Dashboard/CompleteWorks/CompletedWorks";
 import Coverage from "../Pages/Coverage/Coverage";
 import Revenue from "../Pages/Dashboard/Revenue/Revenue";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
+import Contact from "../Pages/Contact/Contact";
 
 
 
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
         {
         path:"about",
         element:<AboutUs></AboutUs>
+      },
+      {
+        path:"contact",
+        element:<Contact></Contact>
       },
       {
         path:"service-display",
