@@ -113,7 +113,7 @@ const ServiceDetails = () => {
     const capitalize = (text = "") =>{
        const value = text.trim();
        if (!value) return "";
-       return value.charAt(0).toUpperCase() + text.slice(1).toLowerCase();}
+       return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();}
 
    const onSubmit = (data) => {
        //console.log(data)
