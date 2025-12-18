@@ -30,6 +30,7 @@ import TodaySchedule from "../Pages/Dashboard/TodaySchedule/TodaySchedule";
 import CompletedWorks from "../Pages/Dashboard/CompleteWorks/CompletedWorks";
 import Coverage from "../Pages/Coverage/Coverage";
 import Revenue from "../Pages/Dashboard/Revenue/Revenue";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
 
 
 
@@ -37,6 +38,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             index:true,
@@ -67,6 +69,7 @@ export const router = createBrowserRouter([
   {
     path:"/",
     element:<AuthLayout></AuthLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:"login",
@@ -84,6 +87,7 @@ export const router = createBrowserRouter([
     element:<PrivateRoute>
       <Dashboard></Dashboard>
     </PrivateRoute>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
        { index: true, 
         element:<DashboardHome></DashboardHome>

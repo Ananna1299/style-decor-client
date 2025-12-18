@@ -129,7 +129,7 @@ const MyBookings = () => {
                 My Bookings
             </h2>
 
-            {/* Desktop Table */}
+            {/* Table */}
             <div className="overflow-x-auto hidden lg:block">
                 <table className="table table-zebra w-full">
                     <thead className="bg-secondary text-white">
@@ -154,7 +154,7 @@ const MyBookings = () => {
                                 <th>{idx + 1}</th>
                                 <td className="font-semibold">{b.serviceName}</td>
                                 <td>{b.category}</td>
-                                <td>{b.costPerUnit} BDT</td>
+                                <td>${b.costPerUnit}</td>
                                 <td className="font-bold text-secondary">{b.totalCost} BDT</td>
                                 <td>{b.unit}</td>
                                 <td>{b.bookingDate}</td>
@@ -203,7 +203,7 @@ const MyBookings = () => {
                 </table>
             </div>
 
-            {/* Mobile Cards */}
+            {/* Mobile  */}
             <div className="grid gap-4 lg:hidden">
                 {bookings.map((b) => (
                     <div key={b._id} className="card bg-base-100 shadow-lg border">
@@ -212,7 +212,7 @@ const MyBookings = () => {
 
                             <p><strong>Category:</strong> {b.category}</p>
                             <p><strong>Cost Per Unit:</strong> {b.costPerUnit}</p>
-                            <p><strong>Total Cost:</strong> {b.totalCost} BDT</p>
+                            <p><strong>Total Cost:</strong>${b.totalCost}</p>
                             <p><strong>Unit:</strong> {b.unit}</p>
                             <p><strong>Date:</strong> {b.bookingDate}</p>
                             <p><strong>Location:</strong> {b.location}</p>

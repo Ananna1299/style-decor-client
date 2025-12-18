@@ -32,7 +32,8 @@ const today = new Date();
       {todaysBookings.length === 0 ? (
         <p className="text-center text-gray-500">No bookings for today</p>
       ) : (
-        <div className="overflow-x-auto">
+        <>
+        <div className="overflow-x-auto hidden lg:block ">
           <table className="table table-zebra w-full">
             <thead className="bg-secondary text-white">
               <tr>
@@ -56,6 +57,48 @@ const today = new Date();
             </tbody>
           </table>
         </div>
+
+        <div className="lg:hidden space-y-4">
+            {todaysBookings.map((b) => (
+              <div
+                key={b._id}
+                className="bg-white border border-purple-200 rounded-xl p-4 shadow-sm"
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="font-bold text-secondary text-lg">
+                    {b.serviceName}
+                  </h3>
+                  
+                </div>
+
+                <div className="space-y-1 text-sm">
+                  <p>
+                    <span className="font-semibold text-secondary">
+                      Date:
+                    </span> {b.bookingDate}
+                  </p>
+
+                  <p>
+                    <span className="font-semibold text-secondary">
+                      Location:
+                    </span> {b.location}
+                  </p>
+
+                  <p>
+                    <span className="font-semibold text-secondary">
+                      Client:
+                    </span> {b.clientEmail}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </>
+
+        
+
+        
       )}
     </div>
     );

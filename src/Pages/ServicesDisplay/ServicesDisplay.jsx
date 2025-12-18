@@ -7,27 +7,24 @@ const ServicesDisplay = () => {
     const axiosInstance=useAxios()
     const [searchText,setSearchText]=useState("")
     const [serviceType, setServiceType] = useState("");
-    // const [budget, setBudget] = useState("");
-    // const [minCost, setMinCost] = useState("");
-    // const [maxCost, setMaxCost] = useState("");
+
+    const [minBudget, setMinBudget] = useState("");
+    const [maxBudget, setMaxBudget] = useState("");
+    
 
 
 
 
     const { data: services = [] } = useQuery({
-    queryKey: ['service',searchText,serviceType],
+    queryKey: ['service',searchText,serviceType,minBudget, maxBudget],
     queryFn: async () => {
-        const res = await axiosInstance.get(`/services?searchText=${searchText}&type=${serviceType}`);
+        const res = await axiosInstance.get(`/services?searchText=${searchText}&type=${serviceType}&minBudget=${minBudget}&maxBudget=${maxBudget}`);
         console.log(res.data);
         return res.data;
     }
 });
 
-// const handleBudgetChange=(value)=>{
-//     setBudget(value);
-//     console.log(value)
-//      
-// }
+
 
 
  const categories = ["Home", "Wedding", "Office", "Seminar", "Meeting"];
@@ -74,18 +71,28 @@ const ServicesDisplay = () => {
 
             </fieldset>
             
-            {/* baki aseeeeeeeeeeeeeeeee */}
+            {/* filter by budget */}
             <fieldset className="fieldset w-64">
-                {/* filter by budget */}
-            <legend className="label font-bold">Please provide value like (min-max)</legend>
-            <input
-                type="text"
-                placeholder="minBudget- maxBudget"
-                className="input input-bordered mb-4"
-                // value={budget}
-                // onChange={(e) => handleBudgetChange(e.target.value)}
-                />
-            </fieldset>
+  <legend className="label font-bold text-secondary">
+    Filter by Budget
+  </legend>
+
+  {/* Min Budget */}
+  <input
+    type="number"
+    placeholder="Minimum Budget"
+    className="input input-bordered mb-3"
+    onChange={(e) => setMinBudget(e.target.value)}
+  />
+
+  {/* Max Budget */}
+  <input
+    type="number"
+    placeholder="Maximum Budget"
+    className="input input-bordered mb-4"
+    onChange={(e) => setMaxBudget(e.target.value)}
+  />
+</fieldset>
             </div>
 
 
@@ -98,7 +105,7 @@ const ServicesDisplay = () => {
             className=" bg-cover bg-center bg-no-repeat  border-3 border-purple-200 rounded-xl p-6 shadow-md hover:shadow-xl"
              style={{ backgroundImage: `url(${img})` }}
           >
-             {/* Image */}
+             
             <img
               src={service.photo}
               alt={service.serviceName}
@@ -106,26 +113,26 @@ const ServicesDisplay = () => {
             />
 
 
-            {/* Service Name */}
+            
             <h3 className="text-xl font-bold text-secondary mb-2">
               {service.serviceName}
             </h3>
 
-            {/* Category */}
+            
             <p className="text-sm font-medium  mb-3">
                 <span className='font-bold text-secondary'>Category:</span>
                 <span className='font-bold'> {service.category}</span>
               
             </p>
 
-            {/* Cost & Unit */}
+          
             <p className="text-secondary font-bold mb-2">
-              Cost: <span className="text-pink-600">{service.cost} BDT</span>
+              Cost: <span className="text-pink-600">${service.cost} </span>
             </p>
             <p className=" text-sm mb-3"><span className='font-bold text-secondary'>Unit: </span>
             <span className='font-bold text-gray-600'>{service.unit}</span></p>
 
-            {/* Email */}
+          
             <p className="text-gray-500 text-xs mb-5"><span className='font-bold text-secondary'>Created by: </span>{service.email}</p>
 
             <Link to={`/service-details/${service._id}`}  className=" w-full bg-gradient-to-br border-1 border-secondary from-pink-300 via-purple-300 to-indigo-200 text-secondary font-bold p-3 rounded-lg hover:cursor-pointer ">
