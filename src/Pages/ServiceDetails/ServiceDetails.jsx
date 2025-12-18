@@ -110,6 +110,11 @@ const ServiceDetails = () => {
         reset();
     };
 
+    const capitalize = (text = "") =>{
+       const value = text.trim();
+       if (!value) return "";
+       return value.charAt(0).toUpperCase() + text.slice(1).toLowerCase();}
+
    const onSubmit = (data) => {
        //console.log(data)
         const quantity = Number(data.quantity);
@@ -127,7 +132,7 @@ const ServiceDetails = () => {
             description: data.description,
             clientName:data.userName,
             clientEmail:data.userEmail,
-            location:data.location,
+            location:capitalize(data.location),
             bookingDate:data.bookingDate,
             status:"Payment not cleared"
             };
@@ -291,7 +296,9 @@ const ServiceDetails = () => {
                         </div>
 
                         <div>
-                              <label className="label font-bold font-display text-secondary text-2xl">Location</label>
+                              <label className="label font-bold font-display text-secondary text-2xl">Location (Example: Dhaka, Rajshahi, Chittagong, Rangpur, Khulna, Sylhet, Dinajpur)
+
+                              </label>
                               <input
                                 type="text"
                                 className="input input-bordered w-full"

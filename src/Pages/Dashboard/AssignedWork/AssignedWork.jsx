@@ -194,16 +194,12 @@ const handleStatusUpdate = (booking, nextStatus) => {
 
 
 
-      {/* mobile */}
+     
       
 
       
 
-      {bookings.length === 0 && (
-        <p className="text-center mt-6 text-gray-500">
-          No assigned work available
-        </p>
-      )}
+      
     </div>
   );
 };

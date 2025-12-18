@@ -155,7 +155,7 @@ const MyBookings = () => {
                                 <td className="font-semibold">{b.serviceName}</td>
                                 <td>{b.category}</td>
                                 <td>${b.costPerUnit}</td>
-                                <td className="font-bold text-secondary">{b.totalCost} BDT</td>
+                                <td className="font-bold text-secondary">${b.totalCost}</td>
                                 <td>{b.unit}</td>
                                 <td>{b.bookingDate}</td>
                                 <td>{b.location}</td>

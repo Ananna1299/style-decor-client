@@ -90,9 +90,12 @@ const ApproveDecorators = () => {
       return Swal.fire("Select at least one specialty");
     }
 
+    const capitalLocation =
+    location.trim().charAt(0).toUpperCase() +location.trim().slice(1).toLowerCase();
+
     approveMutation.mutate({
       id: selectedDecoratorId,
-      location,
+      location:capitalLocation,
       ratings: Number(ratings),
       specialties,
     });
@@ -227,11 +230,13 @@ const ApproveDecorators = () => {
           <h3 className="font-bold text-xl mb-4">
             Approve Decorator
           </h3>
-          <label className='font-semibold mb-1'>Location</label>
+          <label className='font-semibold mb-1'>Location <span className='text-xs text-gray-400'>
+            (Example: Dhaka, Rajshahi, Chittagong, Rangpur, Khulna, Sylhet, Dinajpur)
+            </span></label>
           <input
             type="text"
             placeholder="Enter decorator location"
-            className="input input-bordered w-full mb-4"
+            className="input input-bordered w-full my-4"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
