@@ -30,15 +30,15 @@ const Login = () => {
     }=useForm()
 
     const handleLogin=(data)=>{
-        console.log(data)
+        //console.log(data)
         signIn(data.email,data.password)
         .then(result=>{
-            console.log(result)
+           // console.log(result)
             navigate(`${location.state? location.state : "/"}`)
             reset();
         })
         .catch(error=>{
-            console.log(error)
+           // console.log(error)
         })
     }
 

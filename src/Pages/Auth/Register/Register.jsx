@@ -49,7 +49,7 @@ const Register = () => {
 
             axios.post(image_API_URL,formData)
             .then(res=>{
-                 console.log("after store",res.data.data.url)
+                 //console.log("after store",res.data.data.url)
 
           
             
@@ -97,7 +97,7 @@ const Register = () => {
             reset();
         })
         .catch((error) => {
-    console.log(error)
+    //console.log(error)
   })
   
   

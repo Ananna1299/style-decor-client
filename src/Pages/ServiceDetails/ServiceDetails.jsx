@@ -204,10 +204,10 @@ const ServiceDetails = () => {
         </p>
       </div>
 
-      {/* Buttons */}
+      
       <div className="flex gap-4 justify-end">
         
-        {/* Back Button */}
+        {/* Back */}
         <button
           onClick={() => navigate(-1)}
           className="px-6 py-3 rounded-xl font-display text-2xl border border-purple-500 text-purple-600 font-semibold hover:bg-purple-100  cursor-pointer"
@@ -215,7 +215,7 @@ const ServiceDetails = () => {
           Back
         </button>
 
-        {/* Booking Button */}
+        {/* Booking  */}
         <button onClick={() => openEditModal(service)}
           className="px-8 py-3 font-display text-2xl rounded-xl bg-secondary text-white font-semibold hover:bg-purple-700 cursor-pointer shadow-lg "
         >

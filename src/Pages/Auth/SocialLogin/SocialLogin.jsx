@@ -14,8 +14,8 @@ const SocialLogin = () => {
     const handleGoogleSignIn=()=>{
          googleSignUp()
          .then(result=>{
-            console.log(result.user)
-            console.log(result.user.photoURL)
+            //console.log(result.user)
+            //console.log(result.user.photoURL)
          
 
             //  create user for database
@@ -27,7 +27,7 @@ const SocialLogin = () => {
             }
             axiosSecure.post("/users",userInfo)
             .then(res=>{
-                console.log(res)
+              //  console.log(res)
                 if (res.data.insertedId){
                     console.log("user created in the database social")
                     
@@ -37,7 +37,7 @@ const SocialLogin = () => {
             
          })
          .catch(error=>{
-            console.log(error)
+            //console.log(error)
          })
 
     }

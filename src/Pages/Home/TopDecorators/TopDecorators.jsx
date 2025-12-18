@@ -45,7 +45,7 @@ const TopDecorators = () => {
           {/* Rating */}
           <div className="flex items-center gap-2 mt-4">
             <span className="text-yellow-400 text-3xl">★</span>
-            <span className="font-medium text-secondary font-bold">
+            <span className=" text-secondary font-bold">
               {decorator.ratings}
             </span>
             <span className="text-sm text-purple-400">/ 5</span>
