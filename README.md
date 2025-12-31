@@ -18,8 +18,8 @@ Live Link: https://style-decor-client.web.app/
 Dependencies: @tailwindcss/vite", "@tanstack/react-query", "axios", "firebase", "framer-motion", "leaflet", "react", "react-dom", "react-hook-form", "react-icons", "react-leaflet", "react-router", "recharts", "sweetalert2", "tailwindcss
 
 Running the Project Locally:
-1. Clone the repository: git clone <your-repo-link>
-2. Navigate to the project folder: cd <project-folder>
+1. Clone the repository: git clone repo link
+2. Navigate to the project folder: cd project-folder
 3. Install dependencies: npm install
 4. Set up environment variables:
         ->Create a .env file in the root directory.
