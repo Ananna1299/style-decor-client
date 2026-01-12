@@ -86,7 +86,7 @@ const AdminDashboardHome = () => {
               const { range, count, services } = payload[0].payload;
 
               return (
-                <div className="bg-white p-3 rounded shadow text-sm">
+                <div className="bg-white p-3 rounded shadow text-sm dark:text-pink-600">
                   <p className="font-semibold">{range}</p>
                   <p>Total Services: {count}</p>
                   <p className="mt-1 font-semibold">Services:</p>
