@@ -24,8 +24,8 @@ const today = new Date();
     (b) => b.bookingDate === todayString
   );
     return (
-          <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+          <div className="my-10 px-4">
+      <h2  className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         Today's Bookings
       </h2>
 
@@ -47,11 +47,11 @@ const today = new Date();
             <tbody>
               {todaysBookings.map((b, i) => (
                 <tr key={b._id}>
-                  <td>{i + 1}</td>
-                  <td>{b.serviceName}</td>
-                  <td>{b.bookingDate}</td>
-                  <td>{b.location}</td>
-                  <td>{b.clientEmail}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{i + 1}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.serviceName}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.bookingDate}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.location}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.clientEmail}</td>
                 </tr>
               ))}
             </tbody>
@@ -65,27 +65,27 @@ const today = new Date();
                 className="bg-white border border-purple-200 rounded-xl p-4 shadow-sm"
               >
                 <div className="flex justify-between items-center mb-2">
-                  <h3 className="font-bold text-secondary text-lg">
+                  <h3 className="font-bold text-secondary text-lg dark:text-[#6C3BAA]" >
                     {b.serviceName}
                   </h3>
                   
                 </div>
 
                 <div className="space-y-1 text-sm">
-                  <p>
-                    <span className="font-semibold text-secondary">
+                  <p className='text-secondary dark:text-[#6C3BAA]'>
+                    <span className="font-semibold ">
                       Date:
                     </span> {b.bookingDate}
                   </p>
 
-                  <p>
-                    <span className="font-semibold text-secondary">
+                  <p className='text-secondary dark:text-[#6C3BAA]'>
+                    <span className="font-semibold ">
                       Location:
                     </span> {b.location}
                   </p>
 
-                  <p>
-                    <span className="font-semibold text-secondary">
+                  <p className='text-secondary dark:text-[#6C3BAA]'>
+                    <span className="font-semibold">
                       Client:
                     </span> {b.clientEmail}
                   </p>

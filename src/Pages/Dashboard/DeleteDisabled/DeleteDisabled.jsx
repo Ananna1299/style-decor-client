@@ -88,14 +88,14 @@ const DeleteDisabled = () => {
   }
 
     return (
-      <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+      <div className="my-10 px-4">
+      <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         Approved Decorators
       </h2>
 
      
       <div className="overflow-x-auto hidden lg:block">
-        <table className="table table-zebra w-full">
+        <table className="table  w-full">
           <thead className="bg-secondary text-white">
             <tr>
               <th>#</th>
@@ -111,10 +111,10 @@ const DeleteDisabled = () => {
             {decorators.map((d, index) => (
               <tr key={d._id}>
                 <td>{index + 1}</td>
-                <td>{d.name}</td>
-                <td>{d.email}</td>
-                <td>{d.location}</td>
-                <td className="font-semibold">{d.workStatus}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{d.name}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{d.email}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{d.location}</td>
+                <td className="font-semibold text-secondary dark:text-[#6C3BAA]">{d.workStatus}</td>
                 <td className="space-x-2">
                   {/* Conditional Button */}
                   {d.workStatus === "available" || d.workStatus === "disabled" ? (
@@ -122,8 +122,8 @@ const DeleteDisabled = () => {
                       onClick={() => handleToggleWorkStatus(d)}
                       className={`btn btn-sm ${
                         d.workStatus === "available"
-                          ? "bg-amber-600 text-black"
-                          : "bg-green-600 text-white"
+                          ? "bg-amber-600 text-black border-0"
+                          : "bg-green-600 text-white border-0"
                       }`}
                     >
                       {d.workStatus === "available" ? "Disable" : "Enable"}
@@ -136,7 +136,7 @@ const DeleteDisabled = () => {
 
                   <button
                     onClick={() => handleDelete(d._id)}
-                    className="btn btn-sm bg-red-400 text-white"
+                    className="btn btn-sm bg-red-400 text-white border-0"
                   >
                     Delete
                   </button>
@@ -154,17 +154,17 @@ const DeleteDisabled = () => {
             key={d._id}
             className="border rounded-xl p-4 bg-white shadow-sm"
           >
-            <p className="font-semibold mb-1">Name: {d.name}</p>
+            <p className="font-semibold mb-1 text-secondary dark:text-[#6C3BAA]">Name: {d.name}</p>
 
-            <p className="text-sm">
+            <p className="text-sm text-secondary dark:text-[#6C3BAA]">
               <span className="font-semibold">Email:</span> {d.email}
             </p>
 
-            <p className="text-sm">
+            <p className="text-sm text-secondary dark:text-[#6C3BAA]">
               <span className="font-semibold">Location:</span> {d.location}
             </p>
 
-            <p className="text-sm">
+            <p className="text-sm text-secondary dark:text-[#6C3BAA]">
               <span className="font-semibold">Status:</span>{" "}
               <span className="font-bold">{d.workStatus}</span>
             </p>
@@ -175,8 +175,8 @@ const DeleteDisabled = () => {
                   onClick={() => handleToggleWorkStatus(d)}
                   className={`btn btn-sm flex-1 ${
                     d.workStatus === "available"
-                      ? "bg-yellow-600 text-black"
-                      : "bg-green-600 text-white"
+                      ? "bg-yellow-600 text-black border-0"
+                      : "bg-green-600 text-white border-0"
                   }`}
                 >
                   {d.workStatus === "available" ? "Disable" : "Enable"}
@@ -189,7 +189,7 @@ const DeleteDisabled = () => {
 
               <button
                 onClick={() => handleDelete(d._id)}
-               className="btn btn-sm bg-red-500 flex-1"
+               className="btn btn-sm bg-red-500 flex-1 border-0"
               >
                 Delete
               </button>

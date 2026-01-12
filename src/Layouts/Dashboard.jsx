@@ -33,10 +33,10 @@ const Dashboard = () => {
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
     {/* Navbar */}
-     <nav className="navbar w-full  justify-between bg-white">
+     <nav className="navbar w-full  justify-between bg-white dark:bg-black/90 ">
       <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost ">
         {/* Sidebar toggle icon */}
-        <IoIosMenu size={30} />
+        <IoIosMenu size={30} color='#6C3BAA'/>
       </label>
       <div className='navbar-end'>
         {
@@ -65,7 +65,7 @@ const Dashboard = () => {
 
   <div className="drawer-side is-drawer-close:overflow-visible">
     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-    <div className="flex min-h-full flex-col items-start bg-white is-drawer-close:w-14 is-drawer-open:w-64">
+    <div className="flex min-h-full flex-col items-start bg-white is-drawer-close:w-14 is-drawer-open:w-64 dark:bg-black/90">
       {/* Sidebar content here */}
       <ul className="menu w-full grow">
         {/* List item */}
@@ -75,7 +75,7 @@ const Dashboard = () => {
           
         </li>
         <li>
-          <NavLink to="/dashboard" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
+          <NavLink to="/dashboard" className="is-drawer-close:tooltip is-drawer-close:tooltip-right text-secondary font-semibold dark:text-[#6C3BAA] hover:bg-primary" data-tip="Homepage">
             {/* Home icon */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
             <span className="is-drawer-close:hidden">Homepage</span>
@@ -85,16 +85,24 @@ const Dashboard = () => {
 
         {/* Profile info */}
         <li >
-          <NavLink to="/dashboard/my-profile" className='hover:bg-primary'>
+          <NavLink to="/dashboard/my-profile" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
             <ImProfile size={20} title='My Profile'/>
           <p  className="is-drawer-close:hidden">My Profile</p>
+          </NavLink>
+        </li>
+
+        {/* Update Profile info */}
+        <li >
+          <NavLink to="/dashboard/profile-update" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
+            <ImProfile size={20} title='Profile Update'/>
+          <p  className="is-drawer-close:hidden">Profile Update</p>
           </NavLink>
         </li>
 
 
         {/* my bookings */}
         <li >
-          <NavLink to="/dashboard/my-bookings" className='hover:bg-primary'>
+          <NavLink to="/dashboard/my-bookings" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
              <TbBrandBooking size={20} title='My Bookings' />
           <p  className="is-drawer-close:hidden">My Bookings</p>
           </NavLink>
@@ -105,7 +113,7 @@ const Dashboard = () => {
         {role ==="user" && (
           <>
           <li >
-          <NavLink to="/dashboard/payment-history" className='hover:bg-primary'>
+          <NavLink to="/dashboard/payment-history" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
              <FaHistory size={20} title='My Payment History'/>  
           <p  className="is-drawer-close:hidden">My Payment History</p>
           </NavLink>
@@ -117,46 +125,46 @@ const Dashboard = () => {
         {role === "admin" && (
         <>
             <li>
-            <NavLink to="/dashboard/manage-users" className="hover:bg-primary">
+            <NavLink to="/dashboard/manage-users" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                 <FaUsers size={20} title='Manage Users' />
                 <p className="is-drawer-close:hidden">Manage Users</p>
             </NavLink>
             </li>
 
             <li>
-            <NavLink to="/dashboard/create-service" className="hover:bg-primary">
+            <NavLink to="/dashboard/create-service" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                 <FaWpforms size={20} title='Decoration Service / Packages' />
                 <p className="is-drawer-close:hidden">Decoration Service / Packages</p>
             </NavLink>
             </li>
             <li>
-            <NavLink to="/dashboard/handle-service" className="hover:bg-primary">
+            <NavLink to="/dashboard/handle-service" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                 <FaEdit size={20} title='Edit / Delete Service '/>
                 <p className="is-drawer-close:hidden">Edit / Delete Services</p>
             </NavLink>
             </li>
             <li>
-            <NavLink to="/dashboard/approve-decorators" className="hover:bg-primary">
+            <NavLink to="/dashboard/approve-decorators" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                 <TiTick size={25} title='Approve/Reject Decorators Request ' />
                 <p className="is-drawer-close:hidden">Approve/Reject Decorator Request</p>
             </NavLink>
             </li>
             <li>
-            <NavLink to="/dashboard/delete-decorators" className="hover:bg-primary">
+            <NavLink to="/dashboard/delete-decorators" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                  <MdDeleteForever size={25} title='Delete/Disabled Decorators' />
                 <p className="is-drawer-close:hidden">Delete/Disabled Decorator</p>
             </NavLink>
             </li>
 
             <li>
-            <NavLink to="/dashboard/assign-decorators" className="hover:bg-primary">
+            <NavLink to="/dashboard/assign-decorators" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                  <MdOutlineAssignmentReturned size={20} title='Assign Decorators' />
                 <p className="is-drawer-close:hidden">Assign Decorator</p>
             </NavLink>
             </li>
 
             <li>
-            <NavLink to="/dashboard/revenue" className="hover:bg-primary">
+            <NavLink to="/dashboard/revenue" className="hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]">
                  <FaBangladeshiTakaSign size={20} title='Revenue'/>
                 <p className="is-drawer-close:hidden">Revenue</p>
             </NavLink>
@@ -171,21 +179,21 @@ const Dashboard = () => {
         {role ==="decorator" && (
           <>
           <li >
-          <NavLink to="/dashboard/assigned-work" className='hover:bg-primary'>
+          <NavLink to="/dashboard/assigned-work" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
              <MdAssignmentReturned size={20} title='My Assigned Work'/> 
           <p  className="is-drawer-close:hidden">Assigned Work</p>
           </NavLink>
         </li>
 
         <li >
-          <NavLink to="/dashboard/todays-schedule" className='hover:bg-primary'>
+          <NavLink to="/dashboard/todays-schedule" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
               <RiCalendarScheduleFill size={20} title="Today's Schedule "/>
           <p  className="is-drawer-close:hidden">Today's Schedule</p>
           </NavLink>
         </li>
 
          <li >
-          <NavLink to="/dashboard/completed-works" className='hover:bg-primary'>
+          <NavLink to="/dashboard/completed-works" className='hover:bg-primary text-secondary font-semibold dark:text-[#6C3BAA]'>
               <RiSecurePaymentFill size={20} title="Completed Works "/>
           <p  className="is-drawer-close:hidden">Completed Works</p>
           </NavLink>

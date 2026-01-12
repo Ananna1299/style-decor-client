@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../../../Components/Logo/Logo';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
 
 const Navbar = () => {
   const { logout,user}=useAuth()
+
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+
+
+   useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? 'dark' : 'light');
+  };
+
 
   const handleSignout=()=>{
     logout()
@@ -18,24 +32,30 @@ const Navbar = () => {
   }
 
     const links=<>
-    <li><NavLink to="/" className="text-secondary font-bold hover:text-pink-700">Home</NavLink></li>
-    <li><NavLink to="/service-display" className="text-secondary font-bold hover:text-pink-700">Services</NavLink></li>
-      <li><NavLink to="/coverage" className="text-secondary font-bold hover:text-pink-700">Service Coverage</NavLink></li>
-      <li><NavLink to="/about" className="text-secondary font-bold hover:text-pink-700">About Us</NavLink></li>
+    <li><NavLink to="/" className="text-secondary font-bold hover:text-pink-700 ">Home</NavLink></li>
+    <li><NavLink to="/service-display" className="text-secondary font-bold hover:text-pink-700
+    hover:scale-110">Services</NavLink></li>
+      <li><NavLink to="/coverage" className="text-secondary font-bold hover:text-pink-700
+      hover:scale-110">Service Coverage</NavLink></li>
+      <li><NavLink to="/about" className="text-secondary font-bold hover:text-pink-700
+      hover:scale-110">About Us</NavLink></li>
 
-       <li><NavLink to="/contact" className="text-secondary font-bold hover:text-pink-700">Contact</NavLink></li>
+       <li><NavLink to="/contact" className="text-secondary font-bold hover:text-pink-700
+       hover:scale-110">Contact</NavLink></li>
       
         
         {
           user && <>
-          <li><NavLink to="/dashboard" className="text-secondary font-bold hover:text-pink-700">Dashboard</NavLink></li>
+          <li><NavLink to="/dashboard" className="text-secondary font-bold hover:text-pink-700
+          hover:scale-110">Dashboard</NavLink></li>
           
           </>
         }
 
       </>
     return (
-        <div className="navbar bg-base-100 shadow-sm rounded-xl px-4 mb-4 ">
+        <div className="navbar  w-11/12 mx-auto px-0 ">
+          
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -59,7 +79,7 @@ const Navbar = () => {
   <div className="navbar-end">
     <div className="dropdown">
       <div tabIndex={0} role="button">
-        <p className="btn my-btn-purple text-white rounded-xl font-semibold mr-2">Login Info</p>
+        <p className="btn my-btn-purple text-white rounded-xl font-semibold shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] border-0 hover:scale-110">Login Info</p>
       </div>
       <ul
         tabIndex="-1"
@@ -78,6 +98,15 @@ const Navbar = () => {
           
           
         <li className='hover:bg-primary'><Link to="/register" className='font-semibold text-secondary'>Sign Up</Link></li>
+
+        <div className='pl-2 mt-2'>
+             <input
+                type="checkbox"
+                className="toggle "
+                onChange={(e) => handleTheme(e.target.checked)}
+                defaultChecked={localStorage.getItem('theme') === 'dark'}
+              />
+           </div>
       </ul>
     </div>
 

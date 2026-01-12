@@ -32,6 +32,8 @@ import Coverage from "../Pages/Coverage/Coverage";
 import Revenue from "../Pages/Dashboard/Revenue/Revenue";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import Contact from "../Pages/Contact/Contact";
+import Blog from "../Pages/Blog/Blog";
+import UpdateProfile from "../Pages/Dashboard/UpdateProfile/UpdateProfile";
 
 
 
@@ -65,6 +67,11 @@ export const router = createBrowserRouter([
         path:"coverage",
         element:<Coverage></Coverage>,
         loader: ()=> fetch("../coveredAreas.json")
+      },
+      {
+        path:"blogs",
+        element:<Blog></Blog>,
+        loader: ()=> fetch("../blogs.json")
       }
       
 
@@ -100,6 +107,11 @@ export const router = createBrowserRouter([
       {
         path:"my-profile",
         element:<MyProfile></MyProfile>
+
+      },
+      {
+        path:"profile-update",
+        element:<UpdateProfile></UpdateProfile>
 
       },
       {

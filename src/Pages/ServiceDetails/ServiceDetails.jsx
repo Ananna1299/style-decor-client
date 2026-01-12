@@ -149,86 +149,124 @@ const ServiceDetails = () => {
   if (isLoading) return <Loading></Loading>;
   if (isError) return <ErrorPage></ErrorPage>;
     return (
-        <div className=" w-full md:w-11/12 lg:w-9/12 mx-auto mt-12 p-6">
-  <div className="bg-white shadow-xl rounded-3xl overflow-hidden border border-purple-200">
+        <div className="  mt-10 ">
+          <h2 className="text-5xl font-extrabold text-center mb-10 text-secondary font-display">
+    Decoration Service Details
+  </h2>
+  <div className="max-w-7xl mx-auto px-4 py-10">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-    
+    {/* LEFT: Image Section */}
     <div>
-              <img
-                className="w-full mx-auto h-[600px] object-cover rounded-2xl p-4"
-                src={service.photo}
-                alt=""
-              />
-            </div>
-    <div className="p-10 bg-gradient-to-br from-purple-50 to-white">
+      <div className="rounded-2xl overflow-hidden border border-secondary">
+        <img
+          src={service.photo}
+          alt={service.serviceName}
+          className="w-full h-[520px] object-cover"
+        />
+      </div>
 
-      {/* name */}
-      <h1 className="text-5xl font-extrabold text-secondary text-center mb-8 font-display  ">
+      
+    </div>
+
+    {/* RIGHT: Details Section */}
+    <div className="space-y-6">
+
+      {/* Title */}
+      <h1 className="text-3xl lg:text-4xl font-extrabold text-secondary font-display">
         {service.serviceName}
       </h1>
 
-     
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
+      {/* Price + Rating */}
+      <div className="flex items-center gap-6">
+        <p className="text-2xl font-bold text-secondary dark:text-primary">
+          ${service.cost}
+        </p>
 
-        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg ">
-          <h2 className=" font-semibold text-purple-900 mb-1  text-lg">Category</h2>
-          <p className="text-gray-700 font-medium">{service.category}</p>
+        <div className="flex items-center gap-1">
+          <span className="text-yellow-400 text-xl">★</span>
+          <span className="font-semibold text-gray-700 dark:text-[#6C3BAA]">
+            {service.ratings}
+          </span>
+          <span className="text-sm text-gray-500">/ 5</span>
         </div>
-
-        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg ">
-          <h3 className="text-lg font-semibold text-purple-900 mb-1">Cost</h3>
-          <p className="text-gray-700 font-medium">${service.cost} </p>
-        </div>
-
-        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg ">
-          <h3 className="text-lg font-semibold text-purple-900 mb-1">Provider Email</h3>
-          <p className="text-gray-700 font-medium">{service.email}</p>
-        </div>
-
-        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg ">
-          <h3 className="text-lg font-semibold text-purple-900 mb-1">Unit</h3>
-          <p className="text-gray-700 font-medium">{service.unit}</p>
-        </div>
-        <div className="bg-pink-100 rounded-2xl p-6 shadow-md border border-purple-100 hover:shadow-lg ">
-          <h3 className="text-lg font-semibold text-purple-900 mb-1">Ratings</h3>
-          <p className="text-gray-700 font-medium">{service.ratings}</p>
-        </div>
-
       </div>
 
+      {/* info */}
+      <div className="grid grid-cols-2 gap-4 text-sm">
+        <div>
+          <p className="text-secondary dark:text-[#6C3BAA]">Category</p>
+          <p className="font-semibold text-gray-500 dark:text-gray-500">{service.category}</p>
+        </div>
+
+        <div>
+          <p className="text-secondary dark:text-[#6C3BAA]">Unit</p>
+          <p className="font-semibold text-gray-500 dark:text-gray-500">{service.unit}</p>
+        </div>
+
+        <div>
+          <p className="text-secondary dark:text-[#6C3BAA] " >Provider Email</p>
+          <p className="font-semibold text-gray-500 break-all dark:text-gray-500">
+            {service.email}
+          </p>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t pt-6"></div>
+
       {/* Description */}
-      <div className="bg-pink-100 rounded-2xl p-7 shadow-md border border-purple-100 mb-10 hover:shadow-lg ">
-        <h3 className="text-2xl font-semibold text-purple-900 mb-3">Description</h3>
-        <p className="text-gray-700 text-justify text-lg">
+      <div>
+        <h3 className="text-lg font-semibold text-secondary mb-2 dark:text-[#6C3BAA]">
+          Description
+        </h3>
+        <p className="text-gray-600 leading-relaxed dark:text-gray-500 text-justify">
           {service.description}
         </p>
       </div>
 
-      
-      <div className="flex gap-4 justify-end">
-        
-        {/* Back */}
+      {/* Buttons */}
+      <div className="flex gap-4 pt-6">
         <button
           onClick={() => navigate(-1)}
-          className="px-6 py-3 rounded-xl font-display text-2xl border border-purple-500 text-purple-600 font-semibold hover:bg-purple-100  cursor-pointer"
+          className="px-6 py-3 rounded-xl border border-secondary text-secondary font-semibold
+          hover:cursor-pointer hover:scale-110"
         >
-          Back
+          ⬅️Back
         </button>
 
-        {/* Booking  */}
-        <button onClick={() => openEditModal(service)}
-          className="px-8 py-3 font-display text-2xl rounded-xl bg-secondary text-white font-semibold hover:bg-purple-700 cursor-pointer shadow-lg "
+        <button
+          onClick={() => openEditModal(service)}
+          className="px-8 py-3 rounded-xl bg-secondary text-white  font-semibold shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] border-0 hover:scale-110 hover:cursor-pointer
+          dark:bg-[#6C3BAA]"
         >
           Book Now
         </button>
-
       </div>
+
     </div>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   {/* Edit Modal */}
             <dialog ref={modalRef} className="modal">
-                <div className="modal-box w-11/12 max-w-2xl bg-pink-50 ">
+                <div className="modal-box w-11/12 max-w-2xl">
                     <h3 className="font-bold text-3xl text-secondary mb-6 font-display">Edit Service</h3>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -340,10 +378,12 @@ const ServiceDetails = () => {
                         <div className="modal-action">
                                 <button 
                                     type="submit" 
-                                    className="btn btn-secondary">
+                                    className="btn btn-secondary rounded-xl shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] border-0 hover:scale-110 hover:cursor-pointer
+          dark:bg-[#6C3BAA]">
                                     Book
                                 </button>
-                                <button type="button" className="btn" onClick={closeModal}>
+                                <button type="button" className="btn  rounded-xl border border-secondary text-secondary font-semibold
+          hover:cursor-pointer hover:scale-110 " onClick={closeModal}>
                                     Cancel
                                 </button>
                             </div>

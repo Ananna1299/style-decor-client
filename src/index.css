@@ -6,8 +6,10 @@
 
 @import "tailwindcss";
 @plugin "daisyui"{
-   themes: light --default;
+   themes: light --default,  dark --prefersdark;
 };
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 *{
     font-family: "Urbanist", sans-serif;
@@ -25,6 +27,15 @@
   
 }
 
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  --color-primary: #FF9EB5;
+  --color-secondary: #9A7BD6;
+  --color-base-200: #1f1f1f;
+  --color-accent: #4FD1C5;
+}
+
 .my-btn {
     background-color: #FFC5D3;
    
@@ -39,3 +50,9 @@
 .font-display{
    font-family: "Tangerine", cursive;
 }
+
+.active{
+  text-decoration: underline;
+  
+}
+

@@ -131,8 +131,8 @@ const handleCreateDecorator = (user) => {
 
 
     return (
-        <div className='mt-4'>
-            <p className='text-secondary text-2xl font-bold text-center'>Manage Users</p>
+        <div className='my-10 px-4'>
+            <p className='text-secondary text-5xl font-bold text-center font-display dark:text-[#6C3BAA]'>Manage Users</p>
             
 
             <label className="input my-10">
@@ -155,16 +155,16 @@ const handleCreateDecorator = (user) => {
             <div className="overflow-x-auto hidden lg:block">
             <table className="table">
                 {/* head */}
-                <thead>
+                <thead className="bg-secondary text-white">
                 <tr>
                     <th>
                     
                     </th>
-                    <th className='font-bold text-cyan-950 '>Name</th>
-                     <th  className='font-bold text-cyan-950 '>Photo</th>
-                    <th  className='font-bold text-cyan-950 '>Email</th>
-                    <th  className='font-bold text-cyan-950 '>Role</th>
-                    <th  className='font-bold text-cyan-950 '>Admin Actions</th>
+                    <th className='  '>Name</th>
+                     <th  >Photo</th>
+                    <th  className=''>Email</th>
+                    <th  className=' '>Role</th>
+                    <th  className=' '>Admin Actions</th>
                     
 
                    
@@ -175,8 +175,8 @@ const handleCreateDecorator = (user) => {
     users.map((user,index)=>{
         return (
             <tr key={user._id}>
-                <th>{index+1}</th>
-                <td>{user.displayName}</td>
+                <th className='text-secondary dark:text-[#6C3BAA]'>{index+1}</th>
+                <td  className='text-secondary dark:text-[#6C3BAA]'>{user.displayName}</td>
 
                 <td>
                     <div className="flex items-center gap-3">
@@ -188,12 +188,12 @@ const handleCreateDecorator = (user) => {
                     </div>
                 </td>
 
-                <td>{user.email}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{user.email}</td>
                 <td
                 className={
                     user.role === "admin"
-                    ? "underline font-semibold text-secondary"
-                    : "text-gray-800"
+                    ? "underline font-bold text-secondary"
+                    : "text-secondary dark:text-[#6C3BAA]"
                 }
                 >
                 {user.role}
@@ -201,10 +201,11 @@ const handleCreateDecorator = (user) => {
 
                 <td className='space-x-2'>
                                         {user.role==="admin"?
-                                        <button onClick={()=>handleRemoveAdmin(user)}  className="btn btn-secondary btn-sm  hover:bg-primary">Remove Admin</button>:
+                                        <button onClick={()=>handleRemoveAdmin(user)}  className="btn btn-secondary btn-sm  hover:bg-primary dark:bg-[#6C3BAA]">Remove Admin</button>:
                                         <button onClick={()=>handleMakeAdmin(user)}
                                          disabled={user.role === "rider"} 
-                                           className="btn btn-sm btn-secondary hover:bg-primary">
+                                           className="btn btn-sm btn-secondary hover:bg-primary 
+                                            dark:bg-[#6C3BAA]">
                                             Make Admin
                                            </button>
                                         }
@@ -214,7 +215,8 @@ const handleCreateDecorator = (user) => {
                                         {user.role === "user" && (
                                         <button
                                         onClick={() => handleCreateDecorator(user)}
-                                        className="btn bg-primary btn-sm hover:bg-secondary text-white"
+                                        className="btn bg-primary btn-sm hover:bg-secondary text-white
+                                        border-0"
                                         >
                                         Make Decorator
                                         </button>
@@ -288,7 +290,7 @@ const handleCreateDecorator = (user) => {
         {user.role === "admin" ? (
           <button
             onClick={() => handleRemoveAdmin(user)}
-            className="btn btn-secondary btn-sm flex-1"
+            className="btn btn-secondary btn-sm flex-1 dark:bg-[#6C3BAA] "
           >
             Remove Admin
           </button>
@@ -296,7 +298,7 @@ const handleCreateDecorator = (user) => {
           <button
             onClick={() => handleMakeAdmin(user)}
             disabled={user.role === "rider"}
-            className="btn btn-secondary btn-sm flex-1"
+            className="btn btn-secondary btn-sm flex-1 dark:bg-[#6C3BAA] "
           >
             Make Admin
           </button>
@@ -305,7 +307,7 @@ const handleCreateDecorator = (user) => {
         {user.role === "user" && (
           <button
             onClick={() => handleCreateDecorator(user)}
-            className="btn bg-primary btn-sm text-white flex-1"
+            className="btn bg-primary btn-sm text-white flex-1 border-0"
           >
             Make Decorator
           </button>

@@ -88,14 +88,14 @@ const AssignDecorator = () => {
 
 
     return (
-        <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+        <div className="my-10 px-4">
+      <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         Assign Decorators
       </h2>
 
       
       <div className="overflow-x-auto hidden lg:block">
-        <table className="table table-zebra w-full">
+        <table className="table  w-full">
           <thead className="bg-secondary text-white">
             <tr>
               <th>#</th>
@@ -110,15 +110,15 @@ const AssignDecorator = () => {
           <tbody>
             {bookings.map((b, idx) => (
               <tr key={b._id}>
-                <td>{idx + 1}</td>
-                <td>{b.serviceName}</td>
-                <td>{b.category}</td>
-                <td>{b.location}</td>
-                <td className="font-semibold">{b.status}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{idx + 1}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.serviceName}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.category}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.location}</td>
+                <td className="font-semibold text-secondary dark:text-[#6C3BAA]">{b.status}</td>
                 <td>
                   <button
                     onClick={() => openModal(b)}
-                    className="btn btn-sm btn-primary text-black"
+                    className="btn btn-sm btn-secondary dark:bg-[#6C3BAA] text-white"
                   >
                     Check Available Decorators
                   </button>
@@ -137,22 +137,22 @@ const AssignDecorator = () => {
       key={b._id}
       className="border rounded-xl p-4 bg-white shadow-sm"
     >
-      <p className="font-semibold text-primary mb-1">
-        #{index + 1} — {b.serviceName}
+      <p className="font-semibold text-secondary dark:text-[#6C3BAA] mb-1">
+        {index + 1} — {b.serviceName}
       </p>
 
       <div className="space-y-1 text-sm">
-        <p>
-          <span className="font-semibold">Category:</span>{" "}
+        <p className='text-secondary dark:text-[#6C3BAA]'>
+          <span className="font-semibold ">Category:</span>{" "}
           {b.category}
         </p>
 
-        <p>
-          <span className="font-semibold">Location:</span>{" "}
+        <p className='text-secondary dark:text-[#6C3BAA]'>
+          <span className="font-semibold ">Location:</span>{" "}
           {b.location}
         </p>
 
-        <p>
+        <p className='text-secondary dark:text-[#6C3BAA]'>
           <span className="font-semibold">Status:</span>{" "}
           <span className="font-bold">{b.status}</span>
         </p>
@@ -161,7 +161,7 @@ const AssignDecorator = () => {
       <div className="mt-4">
         <button
           onClick={() => openModal(b)}
-          className="btn btn-sm btn-primary text-black w-full"
+          className="btn btn-sm btn-secondary dark:bg-[#6C3BAA] text-white w-full"
         >
           Check Available Decorators
         </button>
@@ -206,7 +206,7 @@ const AssignDecorator = () => {
                       <td>
                         <button
                           onClick={() => assignMutation.mutate(d)}
-                          className="btn btn-xs bg-secondary text-white"
+                          className="btn btn-xs bg-secondary text-white dark:bg-[#6C3BAA]"
                         >
                           Assign Decorator
                         </button>
@@ -219,7 +219,7 @@ const AssignDecorator = () => {
           )} 
 
           <div className="modal-action">
-            <button className="btn" onClick={() => modalRef.current.close()}>
+            <button className="btn btn-primary text-white" onClick={() => modalRef.current.close()}>
               Close
             </button>
           </div>

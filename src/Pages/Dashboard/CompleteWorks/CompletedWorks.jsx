@@ -23,14 +23,14 @@ const handlePayment=(booking)=>{
     return booking.totalCost*0.7
 }
     return (
-        <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+        <div className="my-10 px-4">
+      <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         Completed Works
       </h2>
 
 
       <div className="overflow-x-auto hidden lg:block">
-        <table className="table table-zebra w-full">
+        <table className="table  w-full">
           <thead className="bg-secondary text-white">
             <tr>
               <th>#</th>
@@ -45,12 +45,12 @@ const handlePayment=(booking)=>{
           <tbody>
             {completedWorks.map((b, index) => (
               <tr key={b._id}>
-                <td>{index + 1}</td>
-                <td>{b.serviceName}</td>
-                <td>{b.bookingDate}</td>
-                <td>{b.location}</td>
-                <td>{b.totalCost}</td>
-                <td >
+                <td className='text-secondary dark:text-[#6C3BAA]'>{index + 1}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.serviceName}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.bookingDate}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.location}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{b.totalCost}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>
                     { handlePayment(b)}
                 </td>
               </tr>

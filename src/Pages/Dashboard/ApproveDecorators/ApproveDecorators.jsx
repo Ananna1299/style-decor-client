@@ -127,14 +127,14 @@ const ApproveDecorators = () => {
 
 
     return (
-        <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+        <div className="my-10 px-4">
+      <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         Approve Decorators
       </h2>
 
       
       <div className="overflow-x-auto hidden lg:block">
-        <table className="table table-zebra w-full">
+        <table className="table  w-full">
           <thead className="bg-secondary text-white">
             <tr>
               <th>#</th>
@@ -148,10 +148,10 @@ const ApproveDecorators = () => {
           <tbody>
             {decorators.map((d, index) => (
               <tr key={d._id}>
-                <td>{index + 1}</td>
-                <td>{d.name}</td>
-                <td>{d.email}</td>
-                <td className='font-bold'>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{index + 1}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{d.name}</td>
+                <td className='text-secondary dark:text-[#6C3BAA]'>{d.email}</td>
+                <td className='text-secondary dark:text-[#6C3BAA] font-bold'>
                  
                     {d.approveStatus}
                   
@@ -161,7 +161,7 @@ const ApproveDecorators = () => {
                   type="button"
                     
                     onClick={() => openApproveModal(d._id)}
-                    className="btn btn-sm btn-secondary"
+                    className="btn btn-sm btn-secondary dark:bg-[#6C3BAA] "
                   >
                     Approve
                   </button>
@@ -170,7 +170,7 @@ const ApproveDecorators = () => {
                   type="button"
                    
                     onClick={() => handleReject(d._id)}
-                    className="btn btn-sm btn-primary text-black"
+                    className="btn btn-sm btn-primary text-white"
                   >
                     Reject
                   </button>
@@ -187,19 +187,19 @@ const ApproveDecorators = () => {
       key={d._id}
       className="border rounded-xl p-4 bg-white shadow-sm"
     >
-      <p className="font-semibold  mb-2">
+      <p className="font-semibold text-secondary dark:text-[#6C3BAA]  mb-2">
         Name: {d.name}
       </p>
 
       <div className="space-y-1 text-sm">
         <p>
-          <span className="font-semibold">Email: </span>
-          {d.email}
+          <span className="font-semibold text-secondary dark:text-[#6C3BAA]">Email: </span>
+          <span className='text-secondary dark:text-[#6C3BAA]'>{d.email}</span>
         </p>
 
         <p>
-          <span className="font-semibold">Status: </span>
-          <span className="font-bold">
+          <span className="font-semibold text-secondary dark:text-[#6C3BAA]">Status: </span>
+          <span className="font-bold text-secondary dark:text-[#6C3BAA]">
             {d.approveStatus}
           </span>
         </p>
@@ -208,14 +208,14 @@ const ApproveDecorators = () => {
       <div className="flex gap-2 mt-4">
         <button
           onClick={() => openApproveModal(d._id)}
-          className="btn btn-sm btn-success flex-1"
+          className="btn btn-sm btn-secondary dark:bg-[#6C3BAA] flex-1"
         >
           Approve
         </button>
 
         <button
           onClick={() => handleReject(d._id)}
-          className="btn btn-sm btn-error flex-1"
+          className="btn btn-sm  btn-primary text-white flex-1"
         >
           Reject
         </button>
@@ -273,7 +273,7 @@ const ApproveDecorators = () => {
           <div className="modal-action">
             <button
               onClick={handleApprove}
-              className="btn btn-success"
+              className="btn btn-secondary dark:bg-[#6C3BAA]"
               disabled={approveMutation.isPending}
             >
               Approve The Decorator

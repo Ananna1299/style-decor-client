@@ -110,14 +110,14 @@ const CreateService = () => {
     return (
 
 
-        <div className='mx-10 mt-4'>
-            <h2 className='text-secondary text-2xl font-bold text-center my-10'>Create Service</h2>
-            <p className='text-black text-center mb-20 '>Bring your creativity to life — add a service and let your decorations make every space unforgettable.</p>
+        <div className='mx-10 my-10'>
+            <h2 className='text-secondary text-5xl font-bold text-center font-display dark:text-[#6C3BAA]  mb-5'>Create Service</h2>
+            <p className='text-pink-600 text-center mb-20 '>Bring your creativity to life — add a service and let your decorations make every space unforgettable.</p>
             <hr class="border-black opacity-10 mb-7"></hr>
-            <p className='font-extrabold text-xl text-secondary mb-4 '>Add Information </p>
+            <p className='font-extrabold text-xl text-secondary mb-4 dark:text-[#6C3BAA] '>Add Information </p>
             <div className='flex justify-between items-center gap-20 mb-30'>
 
-        <form  className='w-full' onSubmit={handleSubmit(handleService)}>
+        <form  className='w-full dark:bg-black dark:p-4 dark:rounded-xl ' onSubmit={handleSubmit(handleService)}>
                 <fieldset  className="fieldset ">
                     {/*service name */}
                 <label className="label font-bold">Service Name</label>
@@ -221,7 +221,7 @@ const CreateService = () => {
 
 
                <button
-                        className="btn bg-primary text-secondary mt-4 mb-7"
+                        className="btn bg-primary text-secondary mt-4 mb-7 dark:text-[#6C3BAA] "
                         disabled={isPending}
                         >
                         {isPending ? (

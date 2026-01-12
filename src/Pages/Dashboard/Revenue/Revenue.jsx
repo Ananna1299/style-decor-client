@@ -19,27 +19,27 @@ const Revenue = () => {
     
  
     return (
-        <div className="my-8 ">
-             <h2 className="text-3xl font-bold text-secondary text-center mb-4">
+        <div className="my-10 px-4 ">
+             <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
           Revenue of each Category
 
         </h2>
 
          <div className="overflow-x-auto mb-10 hidden lg:block">
-        <table className="table table-zebra w-full">
+        <table className="table  w-full">
           <thead className="bg-secondary text-white">
             <tr>
               <th className="text-left px-4 py-2">Category</th>
-              <th className="text-left px-4 py-2">Total Revenue</th>
+              <th className="text-left px-4 py-2">Total Earnings</th>
               <th className="text-left px-4 py-2">Total Orders</th>
             </tr>
           </thead>
           <tbody>
             {revenue.map((r) => (
               <tr key={r._id} className="border-b">
-                <td className="px-4 py-2 font-medium">{r._id}</td>
-                <td className="px-4 py-2 text-purple-700">{r.totalRevenue}</td>
-                <td className="px-4 py-2">{r.totalOrders}</td>
+                <td className="px-4 py-2 font-medium text-secondary dark:text-[#6C3BAA]">{r._id}</td>
+                <td className="px-4 py-2 text-secondary dark:text-[#6C3BAA] font-bold">{r.totalRevenue}</td>
+                <td className="px-4 py-2 text-secondary dark:text-[#6C3BAA]">{r.totalOrders}</td>
               </tr>
             ))}
           </tbody>

@@ -13,6 +13,12 @@ const AuthLayout = () => {
         <div className="relative z-10 w-full flex justify-center items-center">
         <Outlet />
       </div>
+
+
+      
+  
+
+
             
             
 

@@ -15,7 +15,7 @@ const TopDecorators = () => {
     },
   });
     return (
-        <section className="w-11/12 mx-auto my-24">
+        <section className=" my-10">
   <h2 className="text-5xl font-extrabold text-center mb-12 text-secondary font-display">
     Our Finest Decorators
   </h2>
@@ -23,21 +23,22 @@ const TopDecorators = () => {
   {isLoading ? (
    <Loading></Loading>
   ) : (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
       {topDecorators.map((decorator) => (
         <div
           key={decorator._id}
-          className="relative  bg-cover bg-center bg-no-repeat h-96  mb-10 rounded-xl  px-6"
+          className="relative  bg-cover bg-center bg-no-repeat h-96  mb-10 rounded-xl hover:scale-110
+          transition px-6"
                 style={{ backgroundImage: `url(${img})` }}
         >
           {/* Name */}
-          <h3 className="text-4xl font-extrabold text-secondary mt-20 font-display ">
+          <h3 className="text-4xl font-extrabold text-secondary mt-20 font-display dark:text-[#6C3BAA]">
             <span className='font-display' >Decorator Name: </span>
             {decorator.name}
           </h3>
 
           {/* Location */}
-          <p className="text-2xl font-extrabold text-secondary font-display ">
+          <p className="text-2xl font-extrabold text-secondary font-display dark:text-[#6C3BAA]">
              <span className='font-display' > Working Area: </span>
             {decorator.location}
           </p>
@@ -45,7 +46,7 @@ const TopDecorators = () => {
           {/* Rating */}
           <div className="flex items-center gap-2 mt-4">
             <span className="text-yellow-400 text-3xl">★</span>
-            <span className=" text-secondary font-bold">
+            <span className=" text-secondary font-bold dark:text-[#6C3BAA]">
               {decorator.ratings}
             </span>
             <span className="text-sm text-purple-400">/ 5</span>

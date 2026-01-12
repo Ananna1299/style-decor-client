@@ -1,6 +1,7 @@
 import React from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import Loading from '../../../Components/Loder/Loading';
+import img from "../../../assets/back.png"
 
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -25,7 +26,7 @@ const info = data[0] || {};
 
     return (
         <div className="flex justify-center items-center py-10">
-      <div className="bg-white shadow-lg rounded-xl p-6 w-2/3 text-center">
+      <div className="bg-cover bg-center bg-no-repeat shadow-lg rounded-xl p-6 w-2/3 text-center" style={{ backgroundImage: `url(${img})` }}>
         {/* Profile Photo */}
         <img
           src={info.photoURL || user?.photoURL}
@@ -36,21 +37,21 @@ const info = data[0] || {};
         {/* Name */}
         <h2 className='mt-8'>
             <span className='text-xl text-secondary font-bold'>Name: </span>
-            <span  className="text-xl  text-gray-800"> {info.displayName || user?.displayName}</span>
+            <span  className=" text-pink-600 font-display text-4xl"> {info.displayName || user?.displayName}</span>
           
         </h2>
 
         {/* Email */}
         <h2 className='mt-8'>
             <span className='text-xl text-secondary font-bold'>Email: </span>
-            <span  className="text-xl  text-gray-800"> {info.email}</span>
+            <span  className="text-pink-600 font-display text-4xl"> {info.email}</span>
           
         </h2>
 
         {/* Role  */}
         <h2 className='mt-8'>
             <span className='text-xl text-secondary font-bold'>Role: </span>
-            <span  className="text-xl  text-gray-800"> {info.role}</span>
+            <span  className="text-pink-600 font-display text-4xl"> {info.role}</span>
           
         </h2>
         
@@ -62,7 +63,7 @@ const info = data[0] || {};
             Joined: 
             
           </span>
-          <span className="text-xl  text-gray-800">{new Date(info.createdAt).toLocaleDateString()}
+          <span className="text-pink-600 font-display text-4xl">{new Date(info.createdAt).toLocaleDateString()}
                 
             </span>
             </h2>

@@ -37,8 +37,8 @@ const Payment = () => {
   
   
   return (
-        <div className="my-8 ">
-             <h2 className="text-3xl font-bold text-secondary text-center mb-4">
+        <div className="my-10 px-4 ">
+             <h2 className="text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]">
           Complete Your Payment
         </h2>
 
@@ -47,11 +47,11 @@ const Payment = () => {
         </p>
 
         <div className="mt-6 bg-base-100 p-4 rounded-xl border">
-          <p><strong className='text-secondary'>Service:</strong> {booking.serviceName}</p>
-          <p><strong className='text-secondary'>Category:</strong> {booking.category}</p>
-          <p><strong className='text-secondary'>Cost Per Unit:</strong> {booking.costPerUnit}</p>
-          <p><strong className='text-secondary'>Quantity:</strong> {booking.quantity}</p>
-          <p className="text-xl font-bold text-secondary mt-2">
+          <p><strong className='text-secondary dark:text-[#6C3BAA]'>Service:</strong> {booking.serviceName}</p>
+          <p><strong className='text-secondary dark:text-[#6C3BAA]'>Category:</strong> {booking.category}</p>
+          <p><strong className='text-secondary dark:text-[#6C3BAA]'>Cost Per Unit:</strong> {booking.costPerUnit}</p>
+          <p><strong className='text-secondary dark:text-[#6C3BAA]'>Quantity:</strong> {booking.quantity}</p>
+          <p className="text-xl font-bold text-secondary mt-2 dark:text-[#6C3BAA]">
             Total: <span className='text-pink-800'>{booking.totalCost}</span> 
           </p>
         </div>
@@ -59,7 +59,7 @@ const Payment = () => {
 
             <button
             onClick={handlePayment}
-          className="btn btn-primary text-secondary text-lg mt-6"
+          className="btn btn-primary text-secondary dark:bg-[#6C3BAA] dark:text-white text-lg mt-6"
         >
           Pay Now
         </button>

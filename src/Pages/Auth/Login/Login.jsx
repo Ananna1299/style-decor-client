@@ -25,7 +25,8 @@ const Login = () => {
     const {register,
         handleSubmit,
         formState: { errors },
-        reset
+        reset,
+        setValue
 
     }=useForm()
 
@@ -43,12 +44,51 @@ const Login = () => {
     }
 
 
+    const fillAdminCredential = () => {
+  setValue("email", "mithi@gmail.com");
+  setValue("password", "Abc123#");
+};
+
+const fillDecoratorCredential = () => {
+  setValue("email", "fahim@gmail.com");
+  setValue("password", "Abc123#");
+};
+
+
+const fillUserCredential = () => {
+  setValue("email", "emi@gmail.com");
+  setValue("password", "Abc123#");
+};
+
+
 
   return (
 
-     <div className="w-full max-w-sm shrink-0 bg-white p-5 rounded-2xl my-5 ">
-            <h1 className='font-extrabold text-2xl text-cyan-800'>Welcome Back</h1>
-            <p className='text-sm mt-2 text-secondary font-semibold'>Login with StyleDecor</p>
+     <div className="w-full max-w-sm shrink-0 bg-white dark:bg-black p-5 rounded-2xl my-5 ">
+            <h1 className='font-extrabold text-2xl text-secondary dark:text-primary'>Welcome Back</h1>
+            <div className="">
+                <p className='text-sm mt-2 text-secondary font-semibold'>Login with <Link to="/">
+                StyleDecor</Link></p>
+               
+            </div>
+            
+            <div className="flex flex-wrap justify-evenly mb-2">
+                <button className="p-2 rounded-sm bg-primary text-secondary font-semibold mt-4 dark:text-[#6C3BAA] text-sm hover:cursor-pointer "
+                 onClick={fillAdminCredential}>admin login credential</button>
+
+
+                <button   onClick={fillUserCredential} className="p-2 rounded-sm bg-primary text-secondary font-semibold mt-4 dark:text-[#6C3BAA] text-sm hover:cursor-pointer">user login credential</button>
+
+
+                <button  onClick={fillDecoratorCredential}
+                 className="p-2 rounded-sm bg-primary text-secondary font-semibold mt-4 dark:text-[#6C3BAA] text-sm hover:cursor-pointer" >decorator login credential</button>
+
+            </div>
+            
+
+
+
+
             <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
                 <fieldset className="fieldset">
 
@@ -94,11 +134,19 @@ const Login = () => {
 
                 {/* forget pass */}
                 <div><a className="link link-hover">Forgot password?</a></div>
-                <button className="btn bg-primary text-secondary mt-4 ">Login</button>
-                 <p>Don't have an account? <Link className='text-secondary' to="/register"> Register</Link></p>
+                
+
+                    <button className="btn bg-primary text-secondary mt-4 dark:text-[#6C3BAA] ">Login</button>
+               
+                    
+
+            
+                
+                 <p>Don't have an account? <Link className='text-secondary font-semibold' to="/register"> Register</Link></p>
                 </fieldset>
             </form>
         <SocialLogin></SocialLogin>
+        
     </div>
    
   );

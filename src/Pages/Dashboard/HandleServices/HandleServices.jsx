@@ -18,13 +18,16 @@ const HandleServices = () => {
     const categories = ["Home", "Wedding", "Office", "Seminar", "Meeting"];
 
     // all services
-    const { data: services = [], isLoading } = useQuery({
+    const { data: services = {}, isLoading } = useQuery({
         queryKey: ['services'], 
         queryFn: async () => {
             const res = await axiosSecure.get('/services');
+            console.log(res.data)
             return res.data;
         },
     });
+
+    const allServices = services?.result || [];
 
     // Open modal 
     const openEditModal = (service) => {
@@ -115,12 +118,12 @@ const HandleServices = () => {
     if (isLoading) return <Loading></Loading>;
 
     return (
-        <div className="my-8 px-4">
-            <h2 className="text-3xl font-bold text-center text-secondary mb-10">Manage Services</h2>
+        <div className="my-10 px-4">
+            <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>Manage Services</h2>
 
             {/* Desktop Table */}
             <div className="overflow-x-auto hidden lg:block">
-                <table className="table table-zebra w-full">
+                <table className="table w-full">
                     <thead className="bg-secondary text-white">
                         <tr>
                             <th>#</th>
@@ -134,15 +137,15 @@ const HandleServices = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {services.map((service, idx) => (
+                        {allServices.map((service, idx) => (
                             <tr key={service._id}>
-                                <th>{idx + 1}</th>
-                                <td className="font-semibold">{service.serviceName}</td>
-                                <td>{service.category}</td>
-                                <td className="font-bold text-secondary">{service.cost} BDT</td>
-                                <td>{service.unit}</td>
-                                <td>{service.email}</td>
-                                <td className="max-w-xs truncate">{service.description}</td>
+                                <th className='text-secondary dark:text-[#6C3BAA]'>{idx + 1}</th>
+                                <td className='text-secondary font-bold dark:text-[#6C3BAA]'>{service.serviceName}</td>
+                                <td  className='text-secondary dark:text-[#6C3BAA]'>{service.category}</td>
+                                <td  className='text-secondary font-bold dark:text-[#6C3BAA]'>{service.cost} BDT</td>
+                                <td  className='text-secondary dark:text-[#6C3BAA]'>{service.unit}</td>
+                                <td  className='text-secondary dark:text-[#6C3BAA]'>{service.email}</td>
+                                <td className="max-w-xs truncate text-secondary dark:text-[#6C3BAA]">{service.description}</td>
                                 <td className="space-x-2 flex">
                                     <button
                                         onClick={() => openEditModal(service)}
@@ -177,7 +180,7 @@ const HandleServices = () => {
 
             {/* Mobile Cards */}
             <div className="grid gap-4 lg:hidden">
-                {services.map((service) => (
+                {allServices.map((service) => (
                     <div key={service._id} className="card bg-base-100 shadow-lg border">
                         <div className="card-body">
                             <h3 className="card-title text-secondary">{service.serviceName}</h3>

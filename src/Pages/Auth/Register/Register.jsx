@@ -106,9 +106,10 @@ const Register = () => {
      }
 
   return(
-     <div className="w-full max-w-sm shrink-0 bg-white p-5 rounded-2xl my-5">
-            <h1 className='font-extrabold text-2xl text-cyan-800'>Create an Account</h1>
-            <p className='text-sm mt-2 text-secondary font-semibold'>Register with StyleDecor</p>
+     <div className="w-full max-w-sm shrink-0 bg-white dark:bg-black p-5 rounded-2xl my-5">
+            <h1 className='font-extrabold text-2xl text-secondary dark:text-primary'>Create an Account</h1>
+            <p className='text-sm mt-2 text-secondary font-semibold'>Register with <Link to="/">
+                           StyleDecor</Link></p>
             <form className="card-body " 
             onSubmit={handleSubmit(handleRegister)}>
                 <fieldset className="fieldset">
@@ -173,7 +174,7 @@ const Register = () => {
 
                 {/* forget pass */}
                 <div><a className="link link-hover">Forgot password?</a></div>
-                <button className="btn bg-primary text-secondary mt-4 ">Register</button>
+                <button className="btn bg-primary text-secondary mt-4 dark:text-[#6C3BAA]">Register</button>
                 <p>Already have an account? <Link className='text-secondary' to="/login"> Login</Link></p>
                 </fieldset>
             </form>

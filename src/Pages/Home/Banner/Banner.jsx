@@ -7,7 +7,7 @@ import flower from "../../../assets/flowerpic.png"
 const Banner = () => {
     return (
         <section
-      className="relative h-96 lg:h-[500px]  bg-cover bg-center bg-no-repeat flex items-center justify-center mb-10 rounded-xl text-center px-6"
+      className="relative h-96 lg:h-[500px]  bg-cover bg-center bg-no-repeat flex items-center justify-center mb-10 rounded-xl text-center px-6 mt-10"
       style={{ backgroundImage: `url(${img})` }}
     >
 
@@ -84,14 +84,14 @@ const Banner = () => {
                   transition={{duration:2}}
       
       className="relative z-10 max-w-4xl mx-auto">
-        <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-secondary drop-shadow-lg font-display">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-secondary drop-shadow-lg dark:text-[#6C3BAA] font-display">
           Transform Your Space with Effortless Elegance
         </h1>
-        <p className="mt-6 text-lg text-pink-800 font-medium drop-shadow-md">
+        <p className="mt-6 text-sm lg:text-lg text-pink-800 font-medium drop-shadow-md">
          Book professional decorators for stunning home makeovers or memorable ceremonies. Choose from curated packages,
         </p>
         <Link to="/service-display">
-        <button className='bg-secondary text-white mt-6 p-3 font-semibold rounded-xl hover:cursor-pointer hover:bg-pink-900'>Book Decoration Services</button>
+        <button className='bg-secondary text-white mt-6 p-3 font-semibold rounded-xl hover:cursor-pointer hover:scale-110 dark:bg-[#6C3BAA] shadow-[0px_4px_32px_0_rgba(99,102,241,.70)] border-0'>Book Decoration Services</button>
         </Link>
         
       </motion.div>

@@ -4,10 +4,11 @@ import Logo from '../../../Components/Logo/Logo';
 import { FaFacebook, FaFacebookF,  FaMapMarkerAlt,  FaTwitter, FaWhatsapp } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
+import { Link } from 'react-router';
 
 const Footer = () => {
     return (
-          <footer className="bg-[#111827] text-white py-12 px-6 md:px-16 rounded-xl">
+          <footer className="bg-[#111827] text-white py-12 px-6 md:px-16 ">
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
 
@@ -22,10 +23,10 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div className="flex gap-3 mt-4">
-            <a className="bg-[#1A1F2B] p-3 rounded-full hover:bg-[#2563EB] transition" href="https://facebook.com"  target="_blank">
+            <a className="bg-[#1A1F2B] p-3 rounded-full hover:bg-primary transition" href="https://facebook.com"  target="_blank">
               <FaFacebookF />
             </a>
-            <a className="bg-[#1A1F2B] p-3 rounded-full hover:bg-[#1DA1F2] transition"
+            <a className="bg-[#1A1F2B] p-3 rounded-full hover:bg-primary transition"
              href="https://www.instagram.com/"
               target="_blank">
                  <RiInstagramFill />
@@ -34,7 +35,7 @@ const Footer = () => {
             
             
 
-            <a className="bg-[#1A1F2B] p-3 rounded-full hover:bg-[#0A66C2] transition" href="https://twitter.com/"
+            <a className="bg-[#1A1F2B] p-3 rounded-full hover:bg-primary transition" href="https://twitter.com/"
               target="_blank">
                  <FaTwitter />
               
@@ -91,15 +92,16 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-4 text-primary">Company</h3>
 
           <ul className="space-y-2 text-gray-300">
-            <li>➡ About Us</li>
-            <li>➡ Contact Us</li>
+            <li>➡ <Link to="/about"> About Us</Link></li>
+            <li>➡ <Link to="/contact"> Contact Us</Link></li>
             
           </ul>
         </div>
       </div>
 
       {/* Bottom */}
-      <div className="bg-primary text-black text-center py-3 mt-10 font-semibold">
+      <div className="bg-primary text-secondary text-center py-3 mt-10 font-semibold rounded-xl
+      dark:text-[#6C3BAA]">
         Style Decor © 2023. Develop & Maintenance By  
         <a className="font-bold ml-1" href="#"> abc.com</a>
       </div>

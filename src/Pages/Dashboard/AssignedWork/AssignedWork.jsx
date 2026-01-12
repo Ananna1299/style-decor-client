@@ -77,13 +77,13 @@ const handleStatusUpdate = (booking, nextStatus) => {
 
 
   return (
-      <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+      <div className="my-10 mx-4">
+      <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         My Assigned Work
       </h2>
 
       <div className="overflow-x-auto">
-        <table className="table table-zebra">
+        <table className="table ">
           <thead className="bg-secondary text-white">
             <tr>
               <th>#</th>
@@ -102,23 +102,23 @@ const handleStatusUpdate = (booking, nextStatus) => {
 
               return (
                 <tr key={b._id}>
-                  <td>{i + 1}</td>
-                  <td>{b.serviceName}</td>
-                  <td>{b.bookingDate}</td>
-                  <td>{b.location}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{i + 1}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.serviceName}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.bookingDate}</td>
+                  <td className='text-secondary dark:text-[#6C3BAA]'>{b.location}</td>
 
                   <td className="space-x-2">
                     {b.status === "decorator-assigned" && (
                       <>
                         <button
-                          className="btn btn-xs bg-secondary text-white"
+                          className="btn btn-xs bg-secondary text-white dark:bg-[#6C3BAA] border-0"
                           onClick={() => handleStatusUpdate(b, "planning")}
                         >
                           Accept
                         </button>
 
                         <button
-                          className="btn btn-xs btn-error"
+                          className="btn btn-xs btn-error border-0"
                           onClick={() => rejectMutation.mutate(b._id)}
                         >
                           Reject
@@ -128,7 +128,7 @@ const handleStatusUpdate = (booking, nextStatus) => {
 
                     {b.status === "planning" && (
                       <button
-                        className="btn btn-xs bg-secondary text-white"
+                        className="btn btn-xs bg-secondary text-white dark:bg-[#6C3BAA] border-0"
                         onClick={() =>
                           handleStatusUpdate(b, "materials-prepared")
                         }
@@ -140,7 +140,7 @@ const handleStatusUpdate = (booking, nextStatus) => {
                     {b.status === "materials-prepared" && (
                       <button
                         //disabled={isNotToday}
-                        className="btn btn-xs bg-secondary text-white"
+                        className="btn btn-xs bg-secondary text-white dark:bg-[#6C3BAA] border-0"
                         onClick={() => handleStatusUpdate(b, "on-the-way")}
                       >
                         On the Way
@@ -150,7 +150,7 @@ const handleStatusUpdate = (booking, nextStatus) => {
                     {b.status === "on-the-way" && (
                       <button
                         disabled={isNotToday}
-                        className="btn btn-xs bg-secondary text-white"
+                        className="btn btn-xs bg-secondary text-white dark:bg-[#6C3BAA] border-0"
                         onClick={() =>
                           handleStatusUpdate(b, "setup-in-progress")
                         }
@@ -171,9 +171,9 @@ const handleStatusUpdate = (booking, nextStatus) => {
 
                     {b.status !== "decorator-assigned" &&
                       b.status !== "completed" && (
-                        <span className="font-semibold ml-2 text-secondary">
+                        <span className="font-semibold ml-2 text-secondary dark:text-[#6C3BAA]">
                           Current status:{" "}
-                          <span className="text-black font-extrabold">
+                          <span className="text-pink-600 font-extrabold">
                             {b.status.replaceAll("-", " ")}
                           </span>
                         </span>

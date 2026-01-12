@@ -20,14 +20,16 @@ const Coverage = () => {
         }
     }
     return (
-       <div className='max-w-7xl mx-auto my-20'>
-            <h1 className='font-extrabold text-cyan-900 mb-4 text-2xl '>We are available 64 district</h1>
+       <div className='max-w-7xl mx-auto my-10'>
+        <h2 className="text-4xl font-bold text-secondary font-display text-center mb-10">Our Coverage</h2>
+            <h1 className='text-secondary text-sm font-semibold mb-1'>We are available 64 district</h1>
             <div className='mb-20'>
                 <form onSubmit={handleLocation}>
                     <label className='input'>
                             <input
                             name='loc'
                                 type='search'
+                                className='placeholder:text-secondary'
                                 placeholder='Search location'
                             />
                     </label>

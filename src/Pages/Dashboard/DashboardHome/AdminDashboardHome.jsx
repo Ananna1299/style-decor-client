@@ -15,6 +15,10 @@ import {
 
 
 
+
+
+
+
 const AdminDashboardHome = () => {
 
      const axiosSecure = useAxiosSecure();
@@ -27,6 +31,8 @@ const AdminDashboardHome = () => {
       return res.data;
     },
   });
+
+
 
   if (isLoading) return <Loading></Loading>
 
@@ -55,8 +61,8 @@ const AdminDashboardHome = () => {
 
 
     return (
-         <div className="my-8">
-      <h2 className="text-3xl font-bold text-secondary text-center mb-6">
+         <div className="my-10 px-4">
+      <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
         Number of Services Booked by Users
       </h2>
 

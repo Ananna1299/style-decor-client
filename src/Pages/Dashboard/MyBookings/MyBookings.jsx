@@ -124,14 +124,14 @@ const MyBookings = () => {
       if (isLoading) return <Loading></Loading>;
 
     return (
-          <div className="my-8 px-4">
-            <h2 className="text-3xl font-bold text-center text-secondary mb-10">
+          <div className="my-10 px-4">
+            <h2 className='text-secondary text-5xl font-bold mb-5 text-center font-display dark:text-[#6C3BAA]'>
                 My Bookings
             </h2>
 
             {/* Table */}
             <div className="overflow-x-auto hidden lg:block">
-                <table className="table table-zebra w-full">
+                <table className="table  w-full">
                     <thead className="bg-secondary text-white">
                         <tr>
                             <th>#</th>
@@ -151,15 +151,15 @@ const MyBookings = () => {
                     <tbody>
                         {bookings.map((b, idx) => (
                             <tr key={b._id}>
-                                <th>{idx + 1}</th>
-                                <td className="font-semibold">{b.serviceName}</td>
-                                <td>{b.category}</td>
-                                <td>${b.costPerUnit}</td>
+                                <th className='text-secondary dark:text-[#6C3BAA]'>{idx + 1}</th>
+                                <td className='text-secondary font-semibold dark:text-[#6C3BAA]'>{b.serviceName}</td>
+                                <td className='text-secondary dark:text-[#6C3BAA]'>{b.category}</td>
+                                <td className='text-secondary dark:text-[#6C3BAA]'>${b.costPerUnit}</td>
                                 <td className="font-bold text-secondary">${b.totalCost}</td>
-                                <td>{b.unit}</td>
-                                <td>{b.bookingDate}</td>
-                                <td>{b.location}</td>
-                                <td>{b.status}</td>
+                                <td className='text-secondary dark:text-[#6C3BAA]'>{b.unit}</td>
+                                <td className='text-secondary dark:text-[#6C3BAA]'>{b.bookingDate}</td>
+                                <td className='text-secondary dark:text-[#6C3BAA]'>{b.location}</td>
+                                <td className='text-secondary dark:text-[#6C3BAA]'>{b.status}</td>
                               
 
                                 <td className='flex gap-2'>
@@ -173,7 +173,8 @@ const MyBookings = () => {
                                 </div>
                                 <button
                                         onClick={() => openEditModal(b)}
-                                        className="btn btn-sm btn-outline btn-secondary"
+                                        className="btn btn-sm btn-outline btn-secondary
+                                        dark:text-gray-400 dark:border-gray-400 "
                                          disabled={b.paymentStatus === "paid"}
                                     >
                                         Edit
@@ -206,17 +207,17 @@ const MyBookings = () => {
             {/* Mobile  */}
             <div className="grid gap-4 lg:hidden">
                 {bookings.map((b) => (
-                    <div key={b._id} className="card bg-base-100 shadow-lg border">
+                    <div key={b._id} className="card bg-white shadow-lg border">
                         <div className="card-body">
-                            <h3 className="card-title text-secondary">{b.serviceName}</h3>
+                            <h3 className="card-title text-secondary dark:text-[#6C3BAA]">{b.serviceName}</h3>
 
-                            <p><strong>Category:</strong> {b.category}</p>
-                            <p><strong>Cost Per Unit:</strong> {b.costPerUnit}</p>
-                            <p><strong>Total Cost:</strong>${b.totalCost}</p>
-                            <p><strong>Unit:</strong> {b.unit}</p>
-                            <p><strong>Date:</strong> {b.bookingDate}</p>
-                            <p><strong>Location:</strong> {b.location}</p>
-                             <p><strong>Status:</strong> {b.status}</p>
+                            <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Category:</strong> {b.category}</p>
+                            <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Cost Per Unit:</strong> {b.costPerUnit}</p>
+                            <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Total Cost:</strong>${b.totalCost}</p>
+                            <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Unit:</strong> {b.unit}</p>
+                            <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Date:</strong> {b.bookingDate}</p>
+                            <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Location:</strong> {b.location}</p>
+                             <p  className='text-secondary dark:text-[#6C3BAA]'><strong>Status:</strong> {b.status}</p>
 
                             
 
@@ -231,7 +232,7 @@ const MyBookings = () => {
                                 </div>
                                 <button
                                         onClick={() => openEditModal(b)}
-                                        className="btn btn-sm btn-outline btn-secondary"
+                                        className="btn btn-sm btn-outline btn-secondary dark:text-gray-400 dark:border-gray-400 "
                                          disabled={b.paymentStatus === "paid"}
                                     >
                                         Edit
